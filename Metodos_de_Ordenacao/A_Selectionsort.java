@@ -1,11 +1,26 @@
 import java.util.Scanner;
 
 class A_Selectionsort {
-    static boolean selectionsort(int[] array) {
-        int comp = 0, moves = 0;
-        boolean flag = false;
+    static void selectionsort(int[] array) {
+        int comp = 0, mov = 0;
+        for (int i = 0; i < array.length - 1; i++) {
+            int menor = i;
+            for (int j = i + 1; j < array.length; j++) {
+                comp++;
+                if (array[j] < array[menor]) {
+                    menor = j;
+                }
+            }
+            swap(menor, i, array);
+            mov += 3;
+        }
+        System.out.println("Foram feitas " + comp + " comparacoes e " + mov + " movimentacoes.");
+    }
 
-        return flag;
+    public static void swap(int menor, int i, int[] array) {
+        int temp = array[menor];
+        array[menor] = array[i];
+        array[i] = temp;
     }
 
     public static void main(String[] args) {
@@ -13,11 +28,11 @@ class A_Selectionsort {
 
         int[] array = new int[50];
         // Funcoes.preencheOrdenadamente(array);
-        Funcoes.preencheAleatoriamente(array);
-        Funcoes.imprimeArray(array);
+        ZFuncoes.preencheAleatoriamente(array);
+        ZFuncoes.imprimeArray(array);
 
         selectionsort(array);
-        Funcoes.imprimeArray(array);   
+        ZFuncoes.imprimeArray(array);
 
         Sc.close();
     }
