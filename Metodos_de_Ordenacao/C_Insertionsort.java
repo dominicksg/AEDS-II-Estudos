@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-class C_Bubblesort {
-    static void Buublesort(int[] array){
+class C_Insertionsort {
+    static void insertionsort(int[] array) {
         int comp = 0, mov = 0;
-
         
+        System.out.println("Foram feitas " + comp + " comparacoes e " + mov + " movimentacoes.");
     }
 
     public static void main(String[] args) {
@@ -15,7 +15,7 @@ class C_Bubblesort {
         ZFuncoes.preencheAleatoriamente(array);
         ZFuncoes.imprimeArray(array);
 
-        Buublesort(array);
+        insertionsort(array);
         ZFuncoes.imprimeArray(array);
 
         Sc.close();
