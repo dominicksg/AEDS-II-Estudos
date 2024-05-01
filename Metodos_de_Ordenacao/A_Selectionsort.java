@@ -1,6 +1,7 @@
+package Metodos_de_Ordenacao;
 
 class A_Selectionsort {
-    static boolean selectionSort(int[] array, int key){
+    static boolean selectionsort(int[] array, int key){
         boolean flag = false;
 
 
