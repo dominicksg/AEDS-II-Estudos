@@ -8,6 +8,12 @@ public class Funcoes {
         }
     }
 
+    public static void preencheOrdenadamente(int[] vetor){
+        for(int i=1; i<vetor.length;i++){
+            vetor[i] = i;
+        }
+    }
+
     public static void imprimeVetor(int[] vetor) {
         System.out.print("[ ");
 

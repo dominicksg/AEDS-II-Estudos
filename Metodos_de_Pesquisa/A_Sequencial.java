@@ -8,9 +8,9 @@ class A_Sequencial {
         int comp = 0;
         for (int i = 0; i < vetor.length; i++) { // Consigo melhorar esse for, sem o If
             comp++;
-            if(vetor[i] == key){
-                flag=true;
-                i= vetor.length;
+            if (vetor[i] == key) {
+                flag = true;
+                i = vetor.length;
             }
         }
         System.out.println("Foram feitas " + comp + " comparacoes.");
@@ -25,12 +25,13 @@ class A_Sequencial {
         Scanner sc = new Scanner(System.in);
 
         int[] vetor = new int[50];
-        Funcoes.preencheAleatoriamente(vetor);
+        Funcoes.preencheOrdenadamente(vetor);
+        // Funcoes.preencheAleatoriamente(vetor);
         Funcoes.imprimeVetor(vetor);
 
         System.out.println("Pesquise um numero (digite -1 para sair): ");
         int num = sc.nextInt();
-        while (num !=-1){
+        while (num != -1) {
             if (pesquisaSequencial(vetor, num) == true) {
                 System.out.println("Numero " + num + " encontrado.");
             } else {
