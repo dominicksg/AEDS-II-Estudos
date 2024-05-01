@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 class B_Binaria {
     static boolean pesquisaBinaria(int[] array, int key) {
+        int comp = 0;
         boolean flag = false;
         int dir = array.length - 1, esq = 0, meio;
-        int comp = 0;
         System.out.print("Meios: [ ");
         while (esq <= dir) {
             meio = (esq + dir) / 2;
@@ -35,6 +35,7 @@ class B_Binaria {
 
         int[] array = new int[50];
         Funcoes.preencheOrdenadamente(array);
+        // Funcoes.preencheAleatoriamente(array);
         Funcoes.imprimeArray(array);
 
         System.out.print("Pesquise um numero (digite -1 para sair): ");

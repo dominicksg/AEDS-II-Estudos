@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 class A_Sequencial {
     static boolean pesquisaSequencial(int[] array, int key) {
-        boolean flag = false;
         int comp = 0;
+        boolean flag = false;
         for (int i = 0; i < array.length; i++) { // Consigo melhorar esse for, sem o If
             comp++;
             if (array[i] == key) {
