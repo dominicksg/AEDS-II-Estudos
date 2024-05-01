@@ -1,5 +1,3 @@
-
-//package Metodos_de_Pesquisa.Funcoes;
 import java.util.Scanner;
 
 class A_Sequencial {

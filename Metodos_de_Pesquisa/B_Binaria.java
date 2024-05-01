@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 class B_Binaria {
-
     static boolean pesquisaBinaria(int[] array, int key) {
         boolean flag = false;
         int dir = array.length - 1, esq = 0, meio;
