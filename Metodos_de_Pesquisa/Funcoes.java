@@ -1,24 +1,24 @@
 import java.util.Random;
 
 public class Funcoes {
-    public static void preencheAleatoriamente(int[] vetor) {
+    public static void preencheAleatoriamente(int[] array) {
         Random rand = new Random();
-        for (int i = 0; i < vetor.length; i++) {
-            vetor[i] = rand.nextInt(100); // Gera números aleatórios entre 0 e 99
+        for (int i = 0; i < array.length; i++) {
+            array[i] = rand.nextInt(100); // Gera números aleatórios entre 0 e 99
         }
     }
 
-    public static void preencheOrdenadamente(int[] vetor){
-        for(int i=1; i<vetor.length;i++){
-            vetor[i] = i;
+    public static void preencheOrdenadamente(int[] array){
+        for(int i=1; i<array.length;i++){
+            array[i] = i;
         }
     }
 
-    public static void imprimeVetor(int[] vetor) {
+    public static void imprimeArray(int[] array) {
         System.out.print("[ ");
 
-        for (int i = 0; i < vetor.length; i++) {
-            System.out.print(vetor[i] + " ");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
         }
         System.out.print("]");
         System.out.println();
