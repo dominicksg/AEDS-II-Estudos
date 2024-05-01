@@ -5,15 +5,23 @@ class B_Binaria {
     static boolean pesquisaBinaria(int[] array, int key) {
         boolean flag = false;
         int dir = array.length - 1, esq = 0, meio;
-        while(esq<=dir){
-            meio = (esq+dir)/2;
-            if(key==array[meio]){
-                flag == true;
-
+        int comp = 0;
+        System.out.print("Meios: [ ");
+        while (esq <= dir) {
+            meio = (esq + dir) / 2;
+            System.out.print(meio + " ");
+            comp++;
+            if (key == array[meio]) {
+                flag = true;
+                esq = array.length;
+            } else if (key > array[meio]) {
+                esq = meio + 1;
+            } else {
+                dir = meio - 1;
             }
         }
-
-
+        System.out.println("]");
+        System.out.println("Foram feitas " + comp + " comparacoes.");
         return flag;
     }
 
@@ -30,9 +38,7 @@ class B_Binaria {
         Funcoes.preencheOrdenadamente(array);
         Funcoes.imprimeArray(array);
 
-        System.out.println(array.length);
-
-        System.out.println("Pesquise um numero (digite -1 para sair): ");
+        System.out.print("Pesquise um numero (digite -1 para sair): ");
         int num = Sc.nextInt();
         while (num != -1) {
             if (pesquisaBinaria(array, num) == true) {

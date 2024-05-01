@@ -31,7 +31,7 @@ class A_Sequencial {
         // Funcoes.preencheAleatoriamente(array);
         Funcoes.imprimeArray(array);
 
-        System.out.println("Pesquise um numero (digite -1 para sair): ");
+        System.out.print("Pesquise um numero (digite -1 para sair): ");
         int num = Sc.nextInt();
         while (num != -1) {
             if (pesquisaSequencial(array, num) == true) {
