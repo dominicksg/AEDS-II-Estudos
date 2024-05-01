@@ -17,12 +17,14 @@ class A_Sequencial {
         return flag;
     }
 
-    static void pesquisaSequencial(String[] vetor, String key) {
+    static boolean pesquisaSequencial(String[] vetor, String key) {
+        boolean flag = false;
 
+        return flag;
     }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner Sc = new Scanner(System.in);
 
         int[] vetor = new int[50];
         Funcoes.preencheOrdenadamente(vetor);
@@ -30,7 +32,7 @@ class A_Sequencial {
         Funcoes.imprimeVetor(vetor);
 
         System.out.println("Pesquise um numero (digite -1 para sair): ");
-        int num = sc.nextInt();
+        int num = Sc.nextInt();
         while (num != -1) {
             if (pesquisaSequencial(vetor, num) == true) {
                 System.out.println("Numero " + num + " encontrado.");
@@ -38,8 +40,8 @@ class A_Sequencial {
                 System.out.println("Numero " + num + " não encontrado.");
             }
             System.out.println("Pesquise um numero (digite -1 para sair): ");
-            num = sc.nextInt();
+            num = Sc.nextInt();
         }
-        sc.close();
+        Sc.close();
     }
 }
