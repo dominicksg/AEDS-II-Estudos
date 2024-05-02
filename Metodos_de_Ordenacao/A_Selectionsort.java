@@ -27,7 +27,6 @@ class A_Selectionsort {
         Scanner Sc = new Scanner(System.in);
 
         int[] array = new int[50];
-        // Funcoes.preencheOrdenadamente(array);
         ZFuncoes.preencheAleatoriamente(array);
         ZFuncoes.imprimeArray(array);
 

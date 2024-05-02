@@ -34,9 +34,9 @@ class B_Binaria {
         Scanner Sc = new Scanner(System.in);
 
         int[] array = new int[50];
-        Funcoes.preencheOrdenadamente(array);
+        ZFuncoes.preencheOrdenadamente(array);
         // Funcoes.preencheAleatoriamente(array);
-        Funcoes.imprimeArray(array);
+        ZFuncoes.imprimeArray(array);
 
         System.out.print("Pesquise um numero (digite -1 para sair): ");
         int num = Sc.nextInt();
