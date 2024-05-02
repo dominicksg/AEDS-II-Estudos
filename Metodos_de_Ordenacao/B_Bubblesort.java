@@ -50,20 +50,19 @@ class B_Bubblesort {
         Scanner Sc = new Scanner(System.in);
 
         int[] array = new int[50];
-        ZFuncoes.preencheAleatoriamente(array, 4);
+        ZFuncoes.preencheAleatoriamenteParcial(array, 42);
         ZFuncoes.imprimeArray(array);
 
         int[] array2 = new int[50];
-        ZFuncoes.preencheAleatoriamente(array2, 4);
-        ZFuncoes.imprimeArray(array);
+        ZFuncoes.preencheAleatoriamenteParcial(array2, 42);
+        ZFuncoes.imprimeArray(array2);
 
         Buublesort(array);
         ZFuncoes.imprimeArray(array);
 
-        Buublesort(array2);
+        BuublesortOtimizado(array2);
         ZFuncoes.imprimeArray(array2);
 
         Sc.close();
     }
-
 }
