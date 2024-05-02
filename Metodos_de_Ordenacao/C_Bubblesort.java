@@ -66,3 +66,5 @@ class C_Bubblesort {
         Sc.close();
     }
 }
+// Foram feitas 1225 comparacoes e 1800 movimentacoes.
+// Foram feitas 1180 comparacoes e 1800 movimentacoes.

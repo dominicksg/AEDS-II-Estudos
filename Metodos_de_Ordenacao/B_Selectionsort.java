@@ -36,3 +36,4 @@ class B_Selectionsort {
         Sc.close();
     }
 }
+// Foram feitas 1225 comparacoes e 147 movimentacoes.

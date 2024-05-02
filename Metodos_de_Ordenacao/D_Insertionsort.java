@@ -30,5 +30,5 @@ class D_Insertionsort {
 
         Sc.close();
     }
-
 }
+// Foram feitas 600 comparacoes e 649 movimentacoes.
