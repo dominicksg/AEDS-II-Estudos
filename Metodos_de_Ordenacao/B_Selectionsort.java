@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class A_Selectionsort {
+class B_Selectionsort {
     static void selectionsort(int[] array) {
         int comp = 0, mov = 0;
         for (int i = 0; i < array.length - 1; i++) {
@@ -27,11 +27,11 @@ class A_Selectionsort {
         Scanner Sc = new Scanner(System.in);
 
         int[] array = new int[50];
-        ZFuncoes.preencheAleatoriamente(array);
-        ZFuncoes.imprimeArray(array);
+        ArrayIO.preencheAleatoriamente(array);
+        ArrayIO.imprimeArray(array);
 
         selectionsort(array);
-        ZFuncoes.imprimeArray(array);
+        ArrayIO.imprimeArray(array);
 
         Sc.close();
     }

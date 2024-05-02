@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
-class D_Quicksort {
-    static void quicksort(int[] array) {
+class D_Insertionsort {
+    static void insertionsort(int[] array) {
         int comp = 0, mov = 0;
+        
         System.out.println("Foram feitas " + comp + " comparacoes e " + mov + " movimentacoes.");
     }
 
@@ -10,11 +11,11 @@ class D_Quicksort {
         Scanner Sc = new Scanner(System.in);
 
         int[] array = new int[50];
-        ZFuncoes.preencheAleatoriamente(array);
-        ZFuncoes.imprimeArray(array);
+        ArrayIO.preencheAleatoriamente(array);
+        ArrayIO.imprimeArray(array);
 
-        quicksort(array);
-        ZFuncoes.imprimeArray(array);
+        insertionsort(array);
+        ArrayIO.imprimeArray(array);
 
         Sc.close();
     }

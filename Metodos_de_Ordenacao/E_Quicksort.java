@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-class F_Countingsort {
-    static void countingsort(int[] array) {
+class E_Quicksort {
+    static void quicksort(int[] array) {
         int comp = 0, mov = 0;
         System.out.println("Foram feitas " + comp + " comparacoes e " + mov + " movimentacoes.");
     }
@@ -10,11 +10,11 @@ class F_Countingsort {
         Scanner Sc = new Scanner(System.in);
 
         int[] array = new int[50];
-        ZFuncoes.preencheAleatoriamente(array);
-        ZFuncoes.imprimeArray(array);
+        ArrayIO.preencheAleatoriamente(array);
+        ArrayIO.imprimeArray(array);
 
-        countingsort(array);
-        ZFuncoes.imprimeArray(array);
+        quicksort(array);
+        ArrayIO.imprimeArray(array);
 
         Sc.close();
     }

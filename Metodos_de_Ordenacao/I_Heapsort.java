@@ -1,9 +1,8 @@
 import java.util.Scanner;
 
-class C_Insertionsort {
-    static void insertionsort(int[] array) {
+class I_Heapsort {
+    static void heapsort(int[] array) {
         int comp = 0, mov = 0;
-        
         System.out.println("Foram feitas " + comp + " comparacoes e " + mov + " movimentacoes.");
     }
 
@@ -11,11 +10,11 @@ class C_Insertionsort {
         Scanner Sc = new Scanner(System.in);
 
         int[] array = new int[50];
-        ZFuncoes.preencheAleatoriamente(array);
-        ZFuncoes.imprimeArray(array);
+        ArrayIO.preencheAleatoriamente(array);
+        ArrayIO.imprimeArray(array);
 
-        insertionsort(array);
-        ZFuncoes.imprimeArray(array);
+        heapsort(array);
+        ArrayIO.imprimeArray(array);
 
         Sc.close();
     }

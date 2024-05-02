@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-class H_Heapsort {
-    static void heapsort(int[] array) {
+class G_Countingsort {
+    static void countingsort(int[] array) {
         int comp = 0, mov = 0;
         System.out.println("Foram feitas " + comp + " comparacoes e " + mov + " movimentacoes.");
     }
@@ -10,11 +10,11 @@ class H_Heapsort {
         Scanner Sc = new Scanner(System.in);
 
         int[] array = new int[50];
-        ZFuncoes.preencheAleatoriamente(array);
-        ZFuncoes.imprimeArray(array);
+        ArrayIO.preencheAleatoriamente(array);
+        ArrayIO.imprimeArray(array);
 
-        heapsort(array);
-        ZFuncoes.imprimeArray(array);
+        countingsort(array);
+        ArrayIO.imprimeArray(array);
 
         Sc.close();
     }

@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-class E_Shellsort {
-    static void shellsort(int[] array) {
+class H_Mergesort {
+    static void mergesort(int[] array) {
         int comp = 0, mov = 0;
         System.out.println("Foram feitas " + comp + " comparacoes e " + mov + " movimentacoes.");
     }
@@ -10,11 +10,11 @@ class E_Shellsort {
         Scanner Sc = new Scanner(System.in);
 
         int[] array = new int[50];
-        ZFuncoes.preencheAleatoriamente(array);
-        ZFuncoes.imprimeArray(array);
+        ArrayIO.preencheAleatoriamente(array);
+        ArrayIO.imprimeArray(array);
 
-        shellsort(array);
-        ZFuncoes.imprimeArray(array);
+        mergesort(array);
+        ArrayIO.imprimeArray(array);
 
         Sc.close();
     }

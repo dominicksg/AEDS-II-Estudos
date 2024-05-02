@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class B_Bubblesort {
+class C_Bubblesort {
     static void Buublesort(int[] array) {
         int comp = 0, mov = 0;
         // CODIGO INEFICIENTE, PRESENTE APENAS PARA ESTUDO
@@ -50,18 +50,18 @@ class B_Bubblesort {
         Scanner Sc = new Scanner(System.in);
 
         int[] array = new int[50];
-        ZFuncoes.preencheAleatoriamenteParcial(array, 42);
-        ZFuncoes.imprimeArray(array);
+        ArrayIO.preencheAleatoriamenteParcial(array, 42);
+        ArrayIO.imprimeArray(array);
 
         int[] array2 = new int[50];
-        ZFuncoes.preencheAleatoriamenteParcial(array2, 42);
-        ZFuncoes.imprimeArray(array2);
+        ArrayIO.preencheAleatoriamenteParcial(array2, 42);
+        ArrayIO.imprimeArray(array2);
 
         Buublesort(array);
-        ZFuncoes.imprimeArray(array);
+        ArrayIO.imprimeArray(array);
 
         BuublesortOtimizado(array2);
-        ZFuncoes.imprimeArray(array2);
+        ArrayIO.imprimeArray(array2);
 
         Sc.close();
     }

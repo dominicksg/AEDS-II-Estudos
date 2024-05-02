@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class ZFuncoes {
+public class ArrayIO {
     public static void preencheAleatoriamente(int[] array) {
         Random rand = new Random();
         for (int i = 0; i < array.length; i++) {
@@ -52,3 +52,4 @@ public class ZFuncoes {
         System.out.println("]");
     }
 }
+// Autoria de: Douglas Nícolas Silva Gomes
