@@ -2,8 +2,32 @@ import java.util.Scanner;
 
 class F_Shellsort {
     static void shellsort(int[] array) {
-        int comp = 0, mov = 0;
-        System.out.println("Foram feitas " + comp + " comparacoes e " + mov + " movimentacoes.");
+        int[] counts = { 0, 0 }; // counts[0] para comparações, counts[1] para movimentações
+        int h = 1;
+        do {
+            h = (h * 3) + 1;
+        } while (h < array.length);
+        do {
+            h /= 3;
+            for (int cor = 0; cor < h; cor++) {
+                insercaoPorCor(cor, h, array, counts);
+            }
+        } while (h != 1);
+        System.out.println("Foram feitas " + counts[0] + " comparacoes e " + counts[1] + " movimentacoes.");
+    }
+
+    static void insercaoPorCor(int cor, int h, int[] array, int[] counts) {
+        for (int i = (h + cor); i < array.length; i += h) {
+            int tmp = array[i];
+            int j = i - h;
+            counts[0]++;
+            while ((j >= 0) && (array[j] > tmp)) {
+                array[j + h] = array[j];
+                j -= h;
+                counts[1]++;
+            }
+            array[j + h] = tmp;
+        }
     }
 
     public static void main(String[] args) {
@@ -18,5 +42,5 @@ class F_Shellsort {
 
         Sc.close();
     }
-
 }
+// Foram feitas 142 comparacoes e 177 movimentacoes.

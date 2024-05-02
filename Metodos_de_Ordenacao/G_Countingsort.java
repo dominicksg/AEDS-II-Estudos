@@ -18,5 +18,4 @@ class G_Countingsort {
 
         Sc.close();
     }
-
 }

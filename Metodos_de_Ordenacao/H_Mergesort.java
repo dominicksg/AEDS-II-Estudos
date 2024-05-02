@@ -18,5 +18,4 @@ class H_Mergesort {
 
         Sc.close();
     }
-
 }
