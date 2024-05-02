@@ -51,5 +51,28 @@ public class ArrayIO {
         }
         System.out.println("]");
     }
+
+    public static void checkOrdenado(int[] array) {
+        boolean flag = true;
+
+        // Verifica se o array é nulo ou tem menos de 2 elementos
+        if (array == null || array.length < 2) {
+            flag = true;
+            //return true;
+        }
+
+        // Verifica se o array está ordenado
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] > array[i + 1]) {
+                flag = false;
+                i= array.length;
+                //return false;
+            }
+        }
+
+        // Faça uma (pergunta)? verdadeiro : falso
+        System.out.println(flag ? "Esta ordenado:" : "Nao esta ordenado:");
+        //return true;
+    }
 }
 // Autoria de: Douglas Nícolas Silva Gomes

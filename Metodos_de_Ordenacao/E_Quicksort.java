@@ -44,10 +44,17 @@ class E_Quicksort {
         ArrayIO.preencheAleatoriamenteParcial(array, 42);
         ArrayIO.imprimeArray(array);
 
+        long startTime = System.currentTimeMillis();
         quicksort(0, array.length - 1, array);
+        long endTime = System.currentTimeMillis();
+        long executionTime = endTime - startTime;
+        System.out.println("Tempo de execucao: " + executionTime + " ms");
+
+        ArrayIO.checkOrdenado(array);
         ArrayIO.imprimeArray(array);
 
         Sc.close();
     }
 }
 // Foram feitas 8293 comparacoes e 7611 movimentacoes.
+// Tempo de execucao: 5 ms

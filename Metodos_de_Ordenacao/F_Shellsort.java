@@ -57,10 +57,17 @@ class F_Shellsort {
         ArrayIO.preencheAleatoriamenteParcial(array, 42);
         ArrayIO.imprimeArray(array);
 
+        long startTime = System.currentTimeMillis();
         shellsort(array);
+        long endTime = System.currentTimeMillis();
+        long executionTime = endTime - startTime;
+        System.out.println("Tempo de execucao: " + executionTime + " ms");
+
+        ArrayIO.checkOrdenado(array);
         ArrayIO.imprimeArray(array);
 
         Sc.close();
     }
 }
 // Foram feitas 142 comparacoes e 177 movimentacoes.
+// Tempo de execucao: 4 ms

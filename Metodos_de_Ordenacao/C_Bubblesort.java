@@ -57,14 +57,28 @@ class C_Bubblesort {
         ArrayIO.preencheAleatoriamenteParcial(array2, 42);
         ArrayIO.imprimeArray(array2);
 
+        long startTime = System.currentTimeMillis();
         Buublesort(array);
+        long endTime = System.currentTimeMillis();
+        long executionTime = endTime - startTime;
+        System.out.println("Tempo de execucao: " + executionTime + " ms");
+
+        ArrayIO.checkOrdenado(array);
         ArrayIO.imprimeArray(array);
 
+        long startTime2 = System.currentTimeMillis();
         BuublesortOtimizado(array2);
-        ArrayIO.imprimeArray(array2);
+        long endTime2 = System.currentTimeMillis();
+        long executionTime2 = endTime2 - startTime2;
+        System.out.println("Tempo de execucao: " + executionTime2 + " ms");
 
+        ArrayIO.checkOrdenado(array);
+        ArrayIO.imprimeArray(array);
+        
         Sc.close();
     }
 }
 // Foram feitas 1225 comparacoes e 1800 movimentacoes.
+// Tempo de execucao: 4 ms
 // Foram feitas 1180 comparacoes e 1800 movimentacoes.
+// Tempo de execucao: 1 ms
