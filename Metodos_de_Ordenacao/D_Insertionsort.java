@@ -3,7 +3,18 @@ import java.util.Scanner;
 class D_Insertionsort {
     static void insertionsort(int[] array) {
         int comp = 0, mov = 0;
-        
+        for (int i = 1; i < array.length; i++) {
+            int tmp = array[i];
+            int j = i - 1;
+            while ((j >= 0) && (array[j] > tmp)) {
+                array[j + 1] = array[j];
+                j--;
+                mov++;
+                comp++;
+            }
+            array[j + 1] = tmp;
+            mov++;
+        }
         System.out.println("Foram feitas " + comp + " comparacoes e " + mov + " movimentacoes.");
     }
 
@@ -11,7 +22,7 @@ class D_Insertionsort {
         Scanner Sc = new Scanner(System.in);
 
         int[] array = new int[50];
-        ArrayIO.preencheAleatoriamente(array);
+        ArrayIO.preencheAleatoriamenteParcial(array, 42);
         ArrayIO.imprimeArray(array);
 
         insertionsort(array);

@@ -26,7 +26,7 @@ class B_Sequencial {
 
         int[] array = new int[50];
         ArrayIO.preencheOrdenadamente(array);
-        // Funcoes.preencheAleatoriamente(array);
+        // Funcoes.preencheAleatoriamente(array, 42);
         ArrayIO.imprimeArray(array);
 
         System.out.print("Pesquise um numero (digite -1 para sair): ");

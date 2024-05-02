@@ -10,7 +10,7 @@ class G_Countingsort {
         Scanner Sc = new Scanner(System.in);
 
         int[] array = new int[50];
-        ArrayIO.preencheAleatoriamente(array);
+        ArrayIO.preencheAleatoriamenteParcial(array, 42);
         ArrayIO.imprimeArray(array);
 
         countingsort(array);
