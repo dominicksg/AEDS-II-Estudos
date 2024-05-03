@@ -34,40 +34,6 @@ class I_Heapsort {
         // movimentacoes.");
     }
 
-    static void construir(int tamHeap, int[] array) {
-        for (int i = tamHeap; i > 1 && array[i] > array[i / 2]; i /= 2) {
-            swap(i, i / 2, array);
-        }
-    }
-
-    static void reconstruir(int tamHeap, int[] array) {
-        int i = 1;
-        // while (hasFilho(i, tamHeap) == true) {
-        while (i <= (tamHeap / 2)) {
-            int filho = getMaiorFilho(i, tamHeap, array);
-            if (array[i] < array[filho]) {
-                swap(i, filho, array);
-                i = filho;
-            } else {
-                i = tamHeap;
-            }
-        }
-    }
-
-    static int getMaiorFilho(int i, int tamHeap, int[] array) {
-        int filho;
-        if (2 * i == tamHeap || array[2 * i] > array[2 * i + 1]) {
-            filho = 2 * i;
-        } else {
-            filho = 2 * i + 1;
-        }
-        return filho;
-    }
-
-    static boolean hasFilho(int i, int tamHeap, int[] array) {
-        return (i <= (tamHeap / 2));
-    }
-
     static void swap(int i, int j, int[] array) {
         int temp = array[i];
         array[i] = array[j];

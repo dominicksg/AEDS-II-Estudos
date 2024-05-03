@@ -17,24 +17,22 @@ class H_Mergesort {
         int[] arrayEsq = new int[nEsq + 1]; // +1 para a sentinela
         int[] arrayDir = new int[nDir + 1]; // +1 para a sentinela
 
-        int iEsq, iDir;
-
         // Copiar dados para os subarrays temporários
-        for (iEsq = 0; iEsq < nEsq; iEsq++) {
+        for (int iEsq = 0; iEsq < nEsq; iEsq++) {
             arrayEsq[iEsq] = array[esq + iEsq];
         }
 
-        for (iDir = 0; iDir < nDir; iDir++) {
+        for (int iDir = 0; iDir < nDir; iDir++) {
             arrayDir[iDir] = array[(meio + 1) + iDir];
         }
 
         // Sentinela no final dos dois arrays
         arrayEsq[nEsq] = arrayDir[nDir] = 0x7FFFFFFF;
 
-        iEsq = iDir = 0;
+        int iEsq = 0, iDir = 0;
 
         // Mesclar/Intercalar de volta para o array principal
-        // for (iEsq = iDir = 0, i = esq; i <= dir; i++) {
+        // for (/*iEsq = iDir = 0, */int i = esq; i <= dir; i++) {
         // array[i] = (arrayEsq[iEsq] <= arrayDir[iDir]) ? arrayEsq[iEsq++] :
         // arrayDir[iDir++];
         // }
