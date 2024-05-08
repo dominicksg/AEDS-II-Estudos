@@ -25,6 +25,7 @@ class I_Heapsort {
 
         // Ordenando
         int tamHeap = n;
+        // int tamHeap = array.length - 1; // Desconsiderando a posição zero
         while (tamHeap > 1) {
             swap(1, tamHeap--, array);
             reconstruir(tamHeap, array);
@@ -103,3 +104,18 @@ class I_Heapsort {
         Sc.close();
     }
 }
+
+// int[] comp_mov = new int[2];
+
+// for (int tam = 2; tam < personagens.length; tam++) {
+// construir(tam, personagens, comp_mov);
+// }
+
+// int tam = personagens.length - 1;
+// while (tam > 1) {
+// swap(1, tam, personagens);
+// comp_mov[1] += 3;
+// tam--;
+// reconstruir(tam, personagens, comp_mov);
+
+// }
