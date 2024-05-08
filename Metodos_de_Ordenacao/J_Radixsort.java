@@ -1,43 +1,59 @@
 import java.util.Scanner;
 
-class I_Heapsort {
-    static void heapsort(int[] array) {
+class J_Radixsort {
+    static void radixsort(int[] array) {
         // int comp = 0, mov = 0;
 
-        // Alterar o vetor ignorando a posicao zero
-        int[] tmp = new int[array.length + 1];
-        for (int i = 0; i < array.length; i++) {
-            tmp[i + 1] = array[i];
-        }
-        array = tmp;
+        int n = array.length;
+        int max = getMax(array);
 
-        // Constroi Heap
-        for (int tamHeap = 2; tamHeap <= array.length; tamHeap++) {
-            construir(tamHeap, array);
-        }
+        for (int exp = 1; max / exp > 0; exp *= 10) {
 
-        // Ordenando
-        int tamHeap = array.length;
-        while (tamHeap > 1) {
-            swap(1, tamHeap--, array);
-            reconstruir(tamHeap, array);
-        }
+            int[] count = new int[10];
+            int[] output = new int[n];
 
-        // Alterar o vetor para voltar a posicao zero
-        tmp = array;
-        array = new int[array.length];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = tmp[i + 1];
-        }
+            // Inicializar cada posicao do array de contagem
+            for (int i = 0; i < 10; count[i] = 0, i++)
+                ;
 
-        // System.out.println("Foram feitas " + comp + " comparacoes e " + mov + "
-        // movimentacoes.");
+            // Agora, o count[i] contem o numero de elemento iguais a i
+            for (int i = 0; i < n; i++) {
+                count[(array[i] / exp) % 10]++;
+            }
+
+            // Inicializar cada posicao do array de contagem
+            // for (int i = 0; i < n; i++) // Corrigindo a inicialização do array count
+            // count[(array[i] / exp) % 10]++;
+
+            // Agora, o count[i] contem o numero de elemento menores ou iguais a i
+            for (int i = 1; i < 10; i++) {
+                count[i] += count[i - 1];
+            }
+
+            // Ordenando
+            for (int i = n - 1; i >= 0; i--) {
+                output[count[(array[i] / exp) % 10] - 1] = array[i];
+                count[(array[i] / exp) % 10]--;
+            }
+
+            // Copiando para o array original
+            for (int i = 0; i < n; i++) {
+                array[i] = output[i];
+            }
+
+            // System.out.println("Foram feitas " + comp + " comparacoes e " + mov + "
+            // movimentacoes.");
+        }
     }
 
-    static void swap(int i, int j, int[] array) {
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+    static int getMax(int[] array) {
+        int max = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+        }
+        return max;
     }
 
     public static void main(String[] args) {
@@ -48,7 +64,7 @@ class I_Heapsort {
         ArrayIO.imprimeArray(array);
 
         long startTime = System.currentTimeMillis();
-        heapsort(array);
+        radixsort(array);
         long endTime = System.currentTimeMillis();
         long executionTime = endTime - startTime;
         System.out.println("Tempo de execucao: " + executionTime + " ms");
