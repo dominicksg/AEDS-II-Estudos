@@ -24,10 +24,24 @@ class C_Binaria {
         return flag;
     }
 
-    static boolean pesquisaBinaria(String[] array, String key) {
-        boolean flag = false;
+    static int PesquisaBinariaRec(int[] array, int key, int esq, int dir) {
+        if (esq > dir) {
+            return -1;
+        } else {
+            int meio = (esq + dir) / 2;
+            if (key == array[meio]) {
+                return meio;
+            } else if (key > array[meio]) {
+                return PesquisaBinariaRec(array, key, meio + 1, dir);
+            } else {
+                return PesquisaBinariaRec(array, key, esq, meio - 1);
+            }
+        }
+    }
 
-        return flag;
+    static boolean pesquisaBinariaWrap(int[] array, int key) {
+        int index = PesquisaBinariaRec(array, key, 0, array.length - 1);
+        return index != -1;
     }
 
     public static void main(String[] args) {
