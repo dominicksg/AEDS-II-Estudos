@@ -1,34 +1,44 @@
 import java.util.Scanner;
 
 class I_Heapsort {
-    static void heapsort(int[] array) {
+    static int[] heapsort(int[] array) {
         // int comp = 0, mov = 0;
 
+        // int n = array.length - 1; // Desconsiderando a posição zero
+
+        // ----------------------- (OPCIONAL INICIO) -----------------------
         // Alterar o vetor ignorando a posicao zero
-        int[] tmp = new int[array.length + 1];
-        for (int i = 0; i < array.length; i++) {
+        int n = array.length;
+        int[] tmp = new int[n + 1];
+        for (int i = 0; i < n; i++) {
             tmp[i + 1] = array[i];
         }
         array = tmp;
+        // Criando uma nova referência local, e isso NÃO altera o array original.
+        // Preciso RETORNAR o array, caso queira isso
+        // ----------------------- (OPCIONAL FIM) -----------------------
 
         // Constroi Heap
-        for (int tamHeap = 2; tamHeap <= array.length; tamHeap++) {
+        for (int tamHeap = 2; tamHeap <= n; tamHeap++) {
             construir(tamHeap, array);
         }
 
         // Ordenando
-        int tamHeap = array.length;
+        int tamHeap = n;
         while (tamHeap > 1) {
             swap(1, tamHeap--, array);
             reconstruir(tamHeap, array);
         }
 
+        // ----------------------- (OPCIONAL INICIO) -----------------------
         // Alterar o vetor para voltar a posicao zero
         tmp = array;
-        array = new int[array.length];
-        for (int i = 0; i < array.length; i++) {
+        array = new int[n];
+        for (int i = 0; i < n; i++) {
             array[i] = tmp[i + 1];
         }
+        return array;
+        // ----------------------- (OPCIONAL FIM) -----------------------
 
         // System.out.println("Foram feitas " + comp + " comparacoes e " + mov + "
         // movimentacoes.");
@@ -43,8 +53,8 @@ class I_Heapsort {
     static void reconstruir(int tamHeap, int[] array) {
         int i = 1;
         // while (hasFilho(i, tamHeap) == true) {
-        while (i <= (tamHeap / 2)) {
-            int filho = getMaiorFilho(i, tamHeap, array);
+        while (i <= (tamHeap / 2)) { // Mesmo código de cima
+            int filho = getMaiorFilho(i, tamHeap, array); // Retorna a POSICAO
             if (array[i] < array[filho]) {
                 swap(i, filho, array);
                 i = filho;
@@ -82,7 +92,7 @@ class I_Heapsort {
         ArrayIO.imprimeArray(array);
 
         long startTime = System.currentTimeMillis();
-        heapsort(array);
+        array = heapsort(array);
         long endTime = System.currentTimeMillis();
         long executionTime = endTime - startTime;
         System.out.println("Tempo de execucao: " + executionTime + " ms");
