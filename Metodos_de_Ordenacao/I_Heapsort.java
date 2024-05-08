@@ -25,7 +25,6 @@ class I_Heapsort {
 
         // Ordenando
         int tamHeap = n;
-        // int tamHeap = array.length - 1; // Desconsiderando a posição zero
         while (tamHeap > 1) {
             swap(1, tamHeap--, array);
             reconstruir(tamHeap, array);
@@ -83,6 +82,34 @@ class I_Heapsort {
         int temp = array[i];
         array[i] = array[j];
         array[j] = temp;
+    }
+
+    static int[] heapParcial(int[] array, int k) {
+        int n = array.length;
+
+        // Constroi Heap com os k primeiros elementos
+        for (int tamHeap = 2; tamHeap <= k; tamHeap++) {
+            construir(tamHeap, array);
+        }
+
+        // Para cada um dos (n-k) demais elementos, se ele for
+        // menor que a raiz, inserir do heap
+        for (int i = k + 1; i <= n; i++) {
+            if (array[i] < array[1]) {
+                swap(i, 1, array);
+                reconstruir(k, array);
+            }
+        }
+
+        // Ordenando
+        int tamHeap = k;
+        // int tamHeap = array.length - 1; // Desconsiderando a posição zero
+        while (tamHeap > 1) {
+            swap(1, tamHeap--, array);
+            reconstruir(tamHeap, array);
+        }
+
+        return array;
     }
 
     public static void main(String[] args) {

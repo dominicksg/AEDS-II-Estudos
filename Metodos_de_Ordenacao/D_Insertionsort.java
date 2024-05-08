@@ -5,7 +5,7 @@ class D_Insertionsort {
         int comp = 0, mov = 0;
         for (int i = 1; i < array.length; i++) {
             int tmp = array[i];
-            int j = i - 1;
+            int j = i - 1; // int j = (i < k) ? i - 1 : k - 1; // parcial
             while ((j >= 0) && (array[j] > tmp)) {
                 array[j + 1] = array[j];
                 j--;
