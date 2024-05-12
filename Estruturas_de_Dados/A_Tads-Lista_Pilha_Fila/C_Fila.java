@@ -28,7 +28,7 @@ class Fil {
             System.out.println("FILA VAZIA");
             return -1;
         } else {
-            for (int i = 0; i < n-1; i++) {
+            for (int i = 0; i < n - 1; i++) {
                 array[i] = array[i + 1];
             }
             n--;
@@ -56,9 +56,8 @@ public class C_Fila {
         int tam = Sc.nextInt();
         Fil pilha = new Fil(tam);
 
-
         int escolha = 0;
-        while(escolha != 4){
+        while (escolha != 4) {
             System.out.println("====================================================");
             System.out.println("1- Adicionar");
             System.out.println("2- Remover");
@@ -67,7 +66,7 @@ public class C_Fila {
             System.out.println("====================================================");
 
             escolha = Sc.nextInt();
-            switch(escolha){
+            switch (escolha) {
                 case 1:
                     System.out.println("Digite o valor que deseja adicionar");
                     int x = Sc.nextInt();
@@ -82,9 +81,8 @@ public class C_Fila {
                 default:
                     escolha = 4;
             }
-
-            //escolha = Sc.nextInt();
+            // escolha = Sc.nextInt();
         }
-
+        Sc.close();
     }
 }

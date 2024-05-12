@@ -1,4 +1,4 @@
-// Feito por: Victor Souza
+// A_Tads-Lista_Pilha_Fila feito por: Victor Souza
 import java.util.Scanner;
 
 class List {
@@ -21,9 +21,9 @@ class List {
         } else {
             for (int i = n; i > 0; i--) {
                 array[i] = array[i - 1];
-                //System.out.print(array[i] + " " + " AQUI");
+                // System.out.print(array[i] + " " + " AQUI");
             }
-           
+
             array[0] = x;
             n++;
         }
@@ -56,7 +56,7 @@ class List {
         if (n == 0) {
             System.out.println("Erro");
         } else {
-            for (int i = 0; i < n-1 ; i++) {
+            for (int i = 0; i < n - 1; i++) {
                 array[i] = array[i + 1];
             }
             n--;
@@ -95,23 +95,23 @@ class List {
             System.out.print(array[i] + " ");
         }
         System.out.println();
-        
+
     }
 
-    int Soma(){
+    int Soma() {
         int soma = 0;
-        for(int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
             soma += array[i];
         }
 
         return soma;
     }
 
-    int Maior(){
+    int Maior() {
         int maior = array[0];
 
-        for(int i = 1; i < n; i++){
-            if(array[i] > maior){
+        for (int i = 1; i < n; i++) {
+            if (array[i] > maior) {
                 maior = array[i];
             }
         }
@@ -119,53 +119,52 @@ class List {
         return maior;
     }
 
-    void Inverte(){
+    void Inverte() {
         int temp[] = new int[array.length];
 
-        for(int i = 0; i < n; i++){
-            temp[i] = array[n-1-i];
+        for (int i = 0; i < n; i++) {
+            temp[i] = array[n - 1 - i];
         }
-        for(int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
             array[i] = temp[i];
         }
     }
 
-    int Elementos(){   
+    int Elementos() {
         int count = 0;
-        for(int i = 0; i < n; i++){
-            if(array[i] % 2 == 0 || array[i] % 5 == 0){
+        for (int i = 0; i < n; i++) {
+            if (array[i] % 2 == 0 || array[i] % 5 == 0) {
                 count++;
             }
         }
         return count;
-     }
+    }
 
-    void OrdenaSelecao(){
-        for(int i = 1; i < n; i++){
-            for(int j = i; j > 0; j--){
-                if(array[j] < array[j-1]){
-                    int temp = array[j-1];
-                    array[j-1] = array[j];
+    void OrdenaSelecao() {
+        for (int i = 1; i < n; i++) {
+            for (int j = i; j > 0; j--) {
+                if (array[j] < array[j - 1]) {
+                    int temp = array[j - 1];
+                    array[j - 1] = array[j];
                     array[j] = temp;
                 }
             }
-        
+
         }
     }
 
-    void OrdenaInsercao(){
-        for(int i = 1; i < n; i++){
+    void OrdenaInsercao() {
+        for (int i = 1; i < n; i++) {
             int temp = array[i];
             int j = i;
 
-            while(j > 0 && (temp < array[j-1])){
-                array[j] = array[j-1];
+            while (j > 0 && (temp < array[j - 1])) {
+                array[j] = array[j - 1];
                 j--;
             }
-            
+
             array[j] = temp;
 
-            
         }
     }
 }
@@ -187,20 +186,17 @@ public class A_Lista {
         lista.mostra();
         lista.inserirInicio(3);
 
-       lista.mostra();
+        lista.mostra();
         lista.inserir(8, 3);
 
-       lista.mostra();
+        lista.mostra();
 
         lista.inserir(4, 2);
-
 
         lista.mostra();
         System.out.println("Seleçao");
         lista.OrdenaSelecao();
         lista.mostra();
-
-  
 
         lista.removerInicio();
         lista.mostra();
@@ -224,10 +220,9 @@ public class A_Lista {
         lista.OrdenaInsercao();
         lista.mostra();
 
-
         int qtd = lista.Elementos();
         System.out.println(qtd);
 
-
+        Sc.close();
     }
 }

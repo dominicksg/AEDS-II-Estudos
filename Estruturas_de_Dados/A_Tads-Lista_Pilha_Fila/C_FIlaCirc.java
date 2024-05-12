@@ -1,63 +1,59 @@
 import java.util.Scanner;
 
-class Fila{
+class Fila {
     int array[];
     int primeiro, ultimo;
 
-   Fila(){
+    Fila() {
         array = new int[6];
         primeiro = ultimo = 0;
     }
-    
-   Fila(int tam){
-        array = new int[tam +1];
+
+    Fila(int tam) {
+        array = new int[tam + 1];
         primeiro = ultimo = 0;
     }
 
-    void I(int x){
-        if((ultimo+1) % array.length == primeiro){
+    void I(int x) {
+        if ((ultimo + 1) % array.length == primeiro) {
             System.out.println("FILA CHEIA");
-        }
-        else{
+        } else {
             array[ultimo] = x;
-            ultimo = (ultimo+1) % array.length;
+            ultimo = (ultimo + 1) % array.length;
         }
     }
 
-    int R(){
+    int R() {
         int x = -1;
-        if(ultimo == primeiro){
+        if (ultimo == primeiro) {
             System.out.println("FILA VAZIA");
-        }
-        else{
+        } else {
             x = array[primeiro];
-            primeiro = (primeiro+1) % array.length;
+            primeiro = (primeiro + 1) % array.length;
         }
         return x;
     }
 
-
-    void Mostra(){
+    void Mostra() {
         int i = primeiro;
-        while(i != ultimo){
+        while (i != ultimo) {
             System.out.print(array[i] + " ");
-            i = (i+1) % array.length;
+            i = (i + 1) % array.length;
         }
         System.out.println();
     }
 }
 
-public class C_FIlaCirc{
-    public static void main(String[] args){
+public class C_FIlaCirc {
+    public static void main(String[] args) {
         Scanner Sc = new Scanner(System.in);
 
         System.out.println("Digite o tamanho da vetor");
         int tam = Sc.nextInt();
-        C_Fila fila = new C_Fila(tam);
-
+        Fila fila = new Fila(tam);
 
         int escolha = 0;
-        while(escolha != 4){
+        while (escolha != 4) {
             System.out.println("====================================================");
             System.out.println("1- Adicionar");
             System.out.println("2- Remover");
@@ -66,7 +62,7 @@ public class C_FIlaCirc{
             System.out.println("====================================================");
 
             escolha = Sc.nextInt();
-            switch(escolha){
+            switch (escolha) {
                 case 1:
                     System.out.println("Digite o valor que deseja adicionar");
                     int x = Sc.nextInt();
@@ -81,7 +77,6 @@ public class C_FIlaCirc{
                 default:
                     escolha = 4;
             }
-
         }
         Sc.close();
     }
