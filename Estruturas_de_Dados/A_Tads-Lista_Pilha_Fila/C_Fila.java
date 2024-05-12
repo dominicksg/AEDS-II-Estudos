@@ -1,69 +1,60 @@
 import java.util.Scanner;
 
-class Pil{
+class Fil {
     int array[];
     int n;
 
-
-    Pil(){
+    Fil() {
         array = new int[6];
         n = 0;
     }
-    Pil(int tam){
+
+    Fil(int tam) {
         array = new int[tam];
         n = 0;
     }
 
-    void II(int x){
-        
-        if(array.length == n){
-            System.out.println("PILHA CHEIA");
+    void IF(int x) {
+        if (n == array.length) {
+            System.out.println("FILA CHEIA");
+        } else {
+            array[n++] = x;
         }
-        else{
-            for(int i = n; i > 0; i--){
-                array[i] = array[i-1];
-            }
-            array[0] = x;
-            n++;
-        }
-      
     }
 
-    int RI(){
-
-        if(n == 0 || array.length == 0){
-            System.out.println("PILHA VAZIA");
+    int RI() {
+        int x = array[0];
+        if (n == 0) {
+            System.out.println("FILA VAZIA");
             return -1;
-        }
-        else{
-            int x = array[0];
-
-            for(int i = 0; i < n -1; i++){
-                array[i] = array[i+1];
+        } else {
+            for (int i = 0; i < n-1; i++) {
+                array[i] = array[i + 1];
             }
             n--;
-    
-            return x;
         }
 
+        return x;
     }
 
-    void Mostra(){
-        System.out.println("PILHA: ");
-        for(int i = 0; i < n; i++){
+    void Mostra() {
+        System.out.println("FILA: ");
+        for (int i = 0; i < n; i++) {
             System.out.print(array[i] + " ");
         }
         System.out.println();
     }
 }
 
-public class Pilha{
-    public static void main(String[] args){
+public class C_Fila {
+
+    public static void main(String[] args) {
+
         Scanner Sc = new Scanner(System.in);
 
         System.out.println("Digite o tamanho da vetor");
         int tam = Sc.nextInt();
-        Pil pilha = new Pil(tam);
+        Fil pilha = new Fil(tam);
 
 
         int escolha = 0;
@@ -80,7 +71,7 @@ public class Pilha{
                 case 1:
                     System.out.println("Digite o valor que deseja adicionar");
                     int x = Sc.nextInt();
-                    pilha.II(x);
+                    pilha.IF(x);
                     break;
                 case 2:
                     pilha.RI();
@@ -94,8 +85,6 @@ public class Pilha{
 
             //escolha = Sc.nextInt();
         }
-        
-
 
     }
 }

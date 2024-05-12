@@ -1,3 +1,4 @@
+// Feito por: Victor Souza
 import java.util.Scanner;
 
 class List {
@@ -167,13 +168,9 @@ class List {
             
         }
     }
-
-    void OrdenaBolha(){
-        
-    }
 }
 
-public class Lista {
+public class A_Lista {
 
     public static void main(String[] args) {
 
@@ -233,5 +230,4 @@ public class Lista {
 
 
     }
-
 }

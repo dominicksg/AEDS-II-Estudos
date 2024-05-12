@@ -47,13 +47,13 @@ class Fila{
     }
 }
 
-public class FIlaCirc{
+public class C_FIlaCirc{
     public static void main(String[] args){
         Scanner Sc = new Scanner(System.in);
 
         System.out.println("Digite o tamanho da vetor");
         int tam = Sc.nextInt();
-        Fila fila = new Fila(tam);
+        C_Fila fila = new C_Fila(tam);
 
 
         int escolha = 0;
