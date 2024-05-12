@@ -4,7 +4,7 @@ class E_Quicksort {
     static void quicksort(int esq, int dir, int[] array, int[] counts) {
         int i = esq, j = dir, pivo = array[(esq + dir) / 2];
 
-        while (i <= j) { // desnecessário?
+        while (i <= j) {
             while (array[i] < pivo) {
                 i++;
                 counts[0]++;
@@ -19,11 +19,11 @@ class E_Quicksort {
                 j--;
                 counts[1] += 3;
             }
+        }
             if (esq < j)
                 quicksort(esq, j, array, counts);
             if (i < dir) // if (i < k && i < dir) // parcial
                 quicksort(i, dir, array, counts);
-        }
     }
 
     static void swap(int i, int j, int[] array) {
@@ -57,8 +57,5 @@ class E_Quicksort {
         Sc.close();
     }
 }
-// Foram feitas 8293 comparacoes e 7611 movimentacoes.
-// Tempo de execucao: 5 ms
-// Sem o while desnecessário:
-// Foram feitas 2896 comparacoes e 2655 movimentacoes.
-// Tempo de execucao: 4 ms
+// Foram feitas 130 comparacoes e 246 movimentacoes.
+// Tempo de execucao: 3 ms
