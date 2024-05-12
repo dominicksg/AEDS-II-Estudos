@@ -18,9 +18,9 @@ class B_Selectionsort {
     }
 
     public static void swap(int menor, int i, int[] array) {
-        int temp = array[menor];
-        array[menor] = array[i];
-        array[i] = temp;
+        int tmp = array[i];
+        array[i] = array[menor];
+        array[menor] = tmp;
     }
 
     public static void main(String[] args) {
