@@ -4,7 +4,7 @@ class E_Quicksort {
     static void quicksort(int esq, int dir, int[] array, int[] counts) {
         int i = esq, j = dir, pivo = array[(esq + dir) / 2];
 
-        while (i <= j) {
+        while (i <= j) { // desnecessário?
             while (array[i] < pivo) {
                 i++;
                 counts[0]++;
@@ -59,3 +59,6 @@ class E_Quicksort {
 }
 // Foram feitas 8293 comparacoes e 7611 movimentacoes.
 // Tempo de execucao: 5 ms
+// Sem o while desnecessário:
+// Foram feitas 2896 comparacoes e 2655 movimentacoes.
+// Tempo de execucao: 4 ms
