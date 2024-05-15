@@ -44,7 +44,7 @@ class Lista {
         Celula i;
         for (i = primeiro; i.prox != ultimo; i = i.prox)
             ;
-        int num = i.prox.elemento; // TESTAR ISSO (ultimo.elemento)
+        int num = i.prox.elemento; // ou (ultimo.elemento)
         ultimo = i;
         ultimo.prox = i = null;
         return num;
@@ -76,7 +76,7 @@ class Lista {
                 ;
             Celula tmp = new Celula(x);
             tmp.prox = i.prox;
-            i.prox = tmp.prox;
+            i.prox = tmp;
             tmp = i = null;
         }
     }
@@ -121,7 +121,7 @@ class Lista {
     }
 }
 
-public class ListaFlexSimples { // ou Lista Encadeada
+public class ListaflexSimples { // ou Lista Encadeada
     public static void main(String[] args) {
         Lista lista = new Lista();
         int tam = 0;
@@ -141,29 +141,33 @@ public class ListaFlexSimples { // ou Lista Encadeada
         tam = lista.tamanho();
         System.out.println(tam + "\n");
 
-        lista.inserir(2, 1);
+        lista.inserir(2, 2);
         lista.mostrar();
         tam = lista.tamanho();
         System.out.println(tam + "\n");
 
-        // lista.inserir(3, 2);
-        // lista.mostrar();
-        // tam = lista.tamanho();
-        // System.out.println(tam + "\n");
+        lista.inserir(3, 3);
+        lista.mostrar();
+        tam = lista.tamanho();
+        System.out.println(tam + "\n");
 
-        // lista.remover(2);
-        // lista.mostrar();
-        // tam = lista.tamanho();
-        // System.out.println(tam + "\n");
+        lista.remover(2);
+        lista.mostrar();
+        tam = lista.tamanho();
+        System.out.println(tam + "\n");
 
-        // lista.removerFim();
-        // lista.mostrar();
-        // tam = lista.tamanho();
-        // System.out.println(tam + "\n");
+        lista.removerFim();
+        lista.mostrar();
+        tam = lista.tamanho();
+        System.out.println(tam + "\n");
 
-        // lista.removerInicio();
-        // lista.mostrar();
-        // tam = lista.tamanho();
-        // System.out.println(tam + "\n");
+        lista.removerInicio();
+        lista.mostrar();
+        tam = lista.tamanho();
+        System.out.println(tam + "\n");
+
+        System.out.println("Fim");
+
+
     }
 }
