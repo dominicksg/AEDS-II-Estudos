@@ -13,10 +13,10 @@ class Celula {
     }
 }
 
-class Lista {
+class ListaSimples {
     private Celula primeiro, ultimo;
 
-    public Lista() {
+    public ListaSimples() {
         primeiro = new Celula();
         ultimo = primeiro;
     }
@@ -62,7 +62,7 @@ class Lista {
         return elemento;
     }
 
-    public void inserir(int x, int pos) {// 1 elemento = primeiro.prox elemento
+    public void inserir(int x, int pos) {// 1 elemento = primeiro.prox.elemento
         int tam = tamanho();
         if (pos < 0 || pos > tam) {
             System.out.println("ERRO");
@@ -84,7 +84,7 @@ class Lista {
     public int remover(int pos) {
         int tam = tamanho();
         int num = -1;
-        if (primeiro == ultimo || pos < 0 || pos > tam) {
+        if (primeiro == ultimo || pos < 0 || pos >= tam) {
             System.out.println("ERRO");
         } else if (pos == 0) {
             num = removerInicio();
@@ -121,9 +121,9 @@ class Lista {
     }
 }
 
-public class ListaflexSimples { // ou Lista Encadeada
+public class A_ListaflexSimples { // ou Lista Encadeada
     public static void main(String[] args) {
-        Lista lista = new Lista();
+        ListaSimples lista = new ListaSimples();
         int tam = 0;
 
         lista.inserirInicio(1);
@@ -167,7 +167,5 @@ public class ListaflexSimples { // ou Lista Encadeada
         System.out.println(tam + "\n");
 
         System.out.println("Fim");
-
-
     }
 }
