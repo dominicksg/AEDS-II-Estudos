@@ -56,6 +56,7 @@ class C_Bubblesort {
         int[] array2 = new int[50];
         ArrayIO.preencheAleatoriamenteParcial(array2, 42);
         ArrayIO.imprimeArray(array2);
+        System.out.println();
 
         long startTime = System.currentTimeMillis();
         Buublesort(array);
@@ -65,6 +66,7 @@ class C_Bubblesort {
 
         ArrayIO.checkOrdenado(array);
         ArrayIO.imprimeArray(array);
+        System.out.println();
 
         long startTime2 = System.currentTimeMillis();
         BuublesortOtimizado(array2);
