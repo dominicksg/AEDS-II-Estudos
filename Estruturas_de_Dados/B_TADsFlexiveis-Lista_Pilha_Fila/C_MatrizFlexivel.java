@@ -228,6 +228,28 @@ public class C_MatrizFlexivel {
 
         matriz.removeColuna();
         matriz.mostrar();
+
+        matriz.removeLinha();
+        matriz.mostrar();
+
+        matriz.addElemento(1, 0, 0);
+        matriz.mostrar();
+
+        matriz.addElemento(2, 0, 1);
+        matriz.mostrar();
+
+        matriz.addElemento(3, 1, 0);
+        matriz.mostrar();
+
+        matriz.addElemento(4, 1, 1);
+        matriz.mostrar();
+
+        matriz.getDiagonal();
+
+        matriz.addColuna();
+        matriz.addLinha();
+        matriz.mostrar();
+        matriz.getDiagonal();
     }
 }
 
