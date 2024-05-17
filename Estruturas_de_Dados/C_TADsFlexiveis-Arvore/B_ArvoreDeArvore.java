@@ -208,7 +208,7 @@ class Arvore {
 
     // ------------------------------------------------------------------------------------//
 
-public class ArvoreDeArvore {
+public class B_ArvoreDeArvore {
     public static void main(String args[]) {
 
         Arvore tree = new Arvore();

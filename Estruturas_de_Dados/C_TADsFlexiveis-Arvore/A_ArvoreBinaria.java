@@ -20,18 +20,13 @@ class Arvore {
         raiz = new No(x);
     }
 
-    public int soma() {
-        int soma = soma(raiz);
-        return soma;
-    }
-
-    public int getAltura() {
-        int altura = getAltura(raiz);
-        return altura;
-    }
-
     public void inserir(int x) {
         raiz = inserir(raiz, x);
+    }
+
+    public boolean pesquisa(int x) {
+        boolean flag = pesquisa(raiz, x);
+        return flag;
     }
 
     public void caminharCentral() {
@@ -41,24 +36,14 @@ class Arvore {
 
     }
 
-    public boolean pesquisa(int x) {
-        boolean flag = pesquisa(raiz, x);
-        return flag;
+    public int soma() {
+        int soma = soma(raiz);
+        return soma;
     }
 
-    private boolean pesquisa(No i, int key) {
-        boolean flag = false;
-
-        if (i == null) {
-            return flag;
-        } else if (key > i.elemento) {
-            flag = pesquisa(i.dir, key);
-        } else if (key < i.elemento) {
-            flag = pesquisa(i.esq, key);
-        } else {
-            flag = true;
-        }
-        return flag;
+    public int getAltura() {
+        int altura = getAltura(raiz);
+        return altura;
     }
 
     private No inserir(No i, int x) {
@@ -74,13 +59,30 @@ class Arvore {
         return i;
     }
 
+    private boolean pesquisa(No i, int key) {
+        boolean flag = false;
+        if (i == null) {
+            return flag;
+        } else if (key > i.elemento) {
+            flag = pesquisa(i.dir, key);
+        } else if (key < i.elemento) {
+            flag = pesquisa(i.esq, key);
+        } else {
+            flag = true;
+        }
+        return flag;
+    }
+
     private void caminharCentral(No i) {
         if (i != null) {
             caminharCentral(i.esq);
-            System.out.print(i.elemento + " ");
+            System.out.print(i.elemento + " "); // Pre ordem, sysout antes, pos ordem depois
             caminharCentral(i.dir);
         }
     }
+    // Pre ordem prioriza o pai, pq vem antes
+    // Pos ordem prioriza os filhos, pq vem depois, a raiz será o ultimo a ser
+    // impresso
 
     private int soma(No i) {
         if (i == null) {
@@ -98,20 +100,17 @@ class Arvore {
         if (i == null) {
             return -1;
         }
-
         int alturaEsq = 1 + getAltura(i.esq);
         int alturaDir = 1 + getAltura(i.dir);
 
-        int altura = (alturaEsq > alturaDir)?alturaEsq : alturaDir;
+        int altura = (alturaEsq > alturaDir) ? alturaEsq : alturaDir;
 
         return altura;
-             
-    }
 
-    // TREE SORT
+    }
 }
 
-public class ArvoreBinaria {
+public class A_ArvoreBinaria {
     public static void main(String args[]) {
         Arvore arv = new Arvore(5);
         arv.caminharCentral();
@@ -125,6 +124,10 @@ public class ArvoreBinaria {
         arv.inserir(1);
         arv.caminharCentral();
 
+        System.out.println(arv.pesquisa(3));
+        System.out.println(arv.pesquisa(4));
+
+        System.out.println(arv.soma());
         System.out.println(arv.getAltura());
 
     }
