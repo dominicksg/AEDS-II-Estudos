@@ -176,9 +176,9 @@ class Matrizflex {
     }
 
     // SE A CELULA NAO EXISTIR, ELE CRIA UM COMO NAS LISTAS;    
-    void addElementoBloco(int x, int linhaPos, int colunaPos) { 
+    // void addElementoBloco(int x, int linhaPos, int colunaPos) { 
 
-    }
+    // }
 
     void getDiagonal() {
         if (numColunas != numLinhas) {
@@ -228,7 +228,6 @@ public class C_MatrizFlexivel {
 
         matriz.removeColuna();
         matriz.mostrar();
-
     }
 }
 
