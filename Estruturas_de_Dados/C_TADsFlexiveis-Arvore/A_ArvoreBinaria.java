@@ -85,13 +85,22 @@ class Arvore {
     // impresso
 
     private int soma(No i) {
-        if (i == null) {
-            return 0;
-        }
-        int soma = i.elemento + soma(i.esq) + soma(i.dir); // são os "i.elemento" que realizam a soma
-        // int soma = (i == null) ? 0 : i.elemento + soma(i.esq) + soma(i.dir);
-        return soma;
+        // if (i == null) {
+        // return 0;
+        // }
+        // int soma = i.elemento + soma(i.esq) + soma(i.dir); // são os "i.elemento" que
+        // realizam a soma
+        // // int soma = (i == null) ? 0 : i.elemento + soma(i.esq) + soma(i.dir);
+        // return soma;
 
+        // --------- Seguindo a lógica do caminharCentral ---------//
+        int soma = 0;
+        if (i != null) {
+            soma += i.elemento; // Adiciona o elemento do nó atual
+            soma += soma(i.esq);
+            soma += soma(i.dir);
+        }
+        return soma;
     }
 
     private int getAltura(No i) {
