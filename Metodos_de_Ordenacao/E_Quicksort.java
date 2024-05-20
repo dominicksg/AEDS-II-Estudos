@@ -3,7 +3,6 @@ import java.util.Scanner;
 class E_Quicksort {
     static void quicksort(int esq, int dir, int[] array, int[] counts) {
         int i = esq, j = dir, pivo = array[(esq + dir) / 2];
-
         while (i <= j) {
             while (array[i] < pivo) {
                 i++;
@@ -20,10 +19,10 @@ class E_Quicksort {
                 counts[1] += 3;
             }
         }
-            if (esq < j)
-                quicksort(esq, j, array, counts);
-            if (i < dir) // if (i < k && i < dir) // parcial
-                quicksort(i, dir, array, counts);
+        if (esq < j)
+            quicksort(esq, j, array, counts);
+        if (i < dir) // if (i < k && i < dir) // parcial
+            quicksort(i, dir, array, counts);
     }
 
     static void swap(int i, int j, int[] array) {
