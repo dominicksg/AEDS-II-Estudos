@@ -87,10 +87,8 @@ class Arvore {
     private int soma(No i) {
         if (i == null) {
             return 0;
-
         }
         int soma = i.elemento + soma(i.esq) + soma(i.dir); // são os "i.elemento" que realizam a soma
-
         // int soma = (i == null) ? 0 : i.elemento + soma(i.esq) + soma(i.dir);
         return soma;
 
