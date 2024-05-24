@@ -106,6 +106,8 @@ class ListaDupla {
         for (int j = 0; j < pos; j++, i = i.prox)
             ;
         Celula tmp = i.prox;
+        num = tmp.elemento;
+        
         tmp.ant.prox = tmp.prox;
         tmp.prox.ant = tmp.ant;
 
