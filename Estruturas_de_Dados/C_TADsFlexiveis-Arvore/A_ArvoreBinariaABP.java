@@ -183,7 +183,7 @@ public class A_ArvoreBinariaABP {
         System.out.println(arv.getAltura());
 
         arv.inserir(0);
-        // arv.remover(2);
+        // arv.remover(0);
         arv.caminharCentral();
     }
 }
