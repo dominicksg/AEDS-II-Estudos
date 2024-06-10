@@ -16,8 +16,12 @@ class NoABP {
 class ArvoreABP {
     private NoABP raiz;
 
+    ArvoreABP() {
+        this.raiz = null;
+    }
+
     ArvoreABP(int x) {
-        raiz = new NoABP(x);
+        this.raiz = new NoABP(x);
     }
 
     // ====================================//
@@ -28,8 +32,8 @@ class ArvoreABP {
         raiz = inserir(raiz, x);
     }
 
-    public boolean pesquisa(int x) {
-        boolean flag = pesquisa(raiz, x);
+    public boolean pesquisar(int x) {
+        boolean flag = pesquisar(raiz, x);
         return flag;
     }
 
@@ -50,6 +54,10 @@ class ArvoreABP {
         return altura;
     }
 
+    public void remover(int x) {
+        raiz = remover(x, raiz);
+    }
+
     // ====================================//
     // --------- Metodos Privados ---------//
     // ====================================//
@@ -57,26 +65,26 @@ class ArvoreABP {
     private NoABP inserir(NoABP i, int x) {
         if (i == null) {
             i = new NoABP(x);
-        } else if (x > i.elemento) {
-            i.dir = inserir(i.dir, x);
         } else if (x < i.elemento) {
             i.esq = inserir(i.esq, x);
+        } else if (x > i.elemento) {
+            i.dir = inserir(i.dir, x);
         } else {
             System.out.println("ERRO");
         }
         return i;
     }
 
-    private boolean pesquisa(NoABP i, int key) {
+    private boolean pesquisar(NoABP i, int x) {
         boolean flag = false;
         if (i == null) {
             return flag;
-        } else if (key > i.elemento) {
-            flag = pesquisa(i.dir, key);
-        } else if (key < i.elemento) {
-            flag = pesquisa(i.esq, key);
-        } else {
+        } else if (x == i.elemento) {
             flag = true;
+        } else if (x < i.elemento) {
+            flag = pesquisar(i.esq, x);
+        } else {
+            flag = pesquisar(i.dir, x);
         }
         return flag;
     }
@@ -107,6 +115,7 @@ class ArvoreABP {
             soma += i.elemento; // Adiciona o elemento do nó atual
             soma += soma(i.esq);
             soma += soma(i.dir);
+            // soma = i.elemento + soma(i.esq) + soma(i.dir);
         }
         return soma;
     }
@@ -121,6 +130,34 @@ class ArvoreABP {
         int altura = (alturaEsq > alturaDir) ? alturaEsq : alturaDir;
 
         return altura;
+    }
+
+    private NoABP remover(NoABP i, int x) {
+        if (i == null) {
+            System.out.println("ERRO");
+        } else if (x < i.elemento) {
+            i.esq = remover(i.esq, x);
+        } else if (x > i.elemento) {
+            i.dir = remover(i.dir, x);
+        } else if (i.dir == null) { // Sem no a direita.
+            i = i.esq;
+        } else if (i.esq == null) { // Sem no a esquerda.
+            i = i.dir;
+        } else {
+            i.esq = maiorEsq(i, i.esq); // No a esquerda e no a direita.
+        }
+        return i;
+    }
+
+    private NoABP maiorEsq(NoABP i, NoABP j) {
+        // Encontrou o maximo da subarvore esquerda.
+        if (j.dir == null) {
+            i.elemento = j.elemento;// Substitui i por j.
+            j = j.esq; // Substitui j por j.ESQ.
+        } else { // Existe no a direita.
+            j.dir = maiorEsq(i, j.dir); // Caminha para direita.
+        }
+        return j;
     }
 }
 
@@ -138,11 +175,10 @@ public class A_ArvoreBinariaABP {
         arv.inserir(1);
         arv.caminharCentral();
 
-        System.out.println(arv.pesquisa(3));
-        System.out.println(arv.pesquisa(4));
+        System.out.println(arv.pesquisar(3));
+        System.out.println(arv.pesquisar(4));
 
         System.out.println(arv.soma());
         System.out.println(arv.getAltura());
-
     }
 }
