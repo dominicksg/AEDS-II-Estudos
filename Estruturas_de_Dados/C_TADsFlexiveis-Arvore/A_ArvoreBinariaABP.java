@@ -55,7 +55,7 @@ class ArvoreABP {
     }
 
     public void remover(int x) {
-        raiz = remover(x, raiz);
+        raiz = remover(raiz, x);
     }
 
     // ====================================//
@@ -96,6 +96,7 @@ class ArvoreABP {
             caminharCentral(i.dir);
         }
     }
+    // Central printa do menor para o maior
     // Pre ordem prioriza o pai, pq vem antes
     // Pos ordem prioriza os filhos, pq vem depois,
     // a raiz será o ultimo a ser impresso
@@ -180,5 +181,10 @@ public class A_ArvoreBinariaABP {
 
         System.out.println(arv.soma());
         System.out.println(arv.getAltura());
+
+        arv.inserir(0);
+        // arv.remover(2);
+        arv.caminharCentral();
     }
 }
+// cls && javac A_ArvoreBinariaABP.java && java A_ArvoreBinariaABP
