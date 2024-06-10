@@ -164,7 +164,9 @@ class ArvoreABP {
 
 public class A_ArvoreBinariaABP {
     public static void main(String args[]) {
-        ArvoreABP arv = new ArvoreABP(5);
+        ArvoreABP arv = new ArvoreABP();
+
+        arv.inserirABP(5);
         arv.caminharCentral();
 
         arv.inserirABP(2);
@@ -183,7 +185,9 @@ public class A_ArvoreBinariaABP {
         System.out.println(arv.getAltura());
 
         arv.inserirABP(0);
-        // arv.removerABP(0);
+        arv.caminharCentral();
+
+        arv.removerABP(0);
         arv.caminharCentral();
     }
 }

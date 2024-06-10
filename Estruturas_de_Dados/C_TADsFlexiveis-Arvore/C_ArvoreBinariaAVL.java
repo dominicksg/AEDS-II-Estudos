@@ -50,7 +50,7 @@ class ArvoreAVL {
     }
 
     public void caminharCentral() {
-        System.out.println("[ ");
+        System.out.print("[ ");
         caminharCentral(raiz);
         System.out.println("]");
     }
@@ -94,7 +94,7 @@ class ArvoreAVL {
     private void caminharCentral(NoAVL i) {
         if (i != null) {
             caminharCentral(i.esq);
-            System.out.println(i.elemento + " ");
+            System.out.print(i.elemento + " ");
             caminharCentral(i.dir);
         }
     }
@@ -185,6 +185,7 @@ public class C_ArvoreBinariaAVL {
     public static void main(String args[]) throws Exception {
         ArvoreAVL arv = new ArvoreAVL();
 
+        arv.inserirAVL(5);
         arv.caminharCentral();
 
         arv.inserirAVL(2);
@@ -200,8 +201,10 @@ public class C_ArvoreBinariaAVL {
         System.out.println(arv.pesquisar(4));
 
         arv.inserirAVL(0);
-        // arv.removerAVL(0);
+        arv.caminharCentral();
+
+        arv.removerAVL(0);
         arv.caminharCentral();
     }
 }
-// cls && javac Practice.java && java Practice
+// cls && javac C_ArvoreBinariaAVL.java && java C_ArvoreBinariaAVL
