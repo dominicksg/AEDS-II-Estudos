@@ -183,7 +183,7 @@ class ArvoreAVL {
     }
 }
 
-public class Practice {
+public class C_ArvoreBinariaAVL {
 
 }
 // cls && javac Practice.java && java Practice
