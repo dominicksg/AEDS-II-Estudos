@@ -28,8 +28,8 @@ class ArvoreABP {
     // --------- Metodos Publicos ---------//
     // ====================================//
 
-    public void inserir(int x) {
-        raiz = inserir(raiz, x);
+    public void inserirABP(int x) {
+        raiz = inserirABP(raiz, x);
     }
 
     public boolean pesquisar(int x) {
@@ -54,21 +54,21 @@ class ArvoreABP {
         return altura;
     }
 
-    public void remover(int x) {
-        raiz = remover(raiz, x);
+    public void removerABP(int x) {
+        raiz = removerABP(raiz, x);
     }
 
     // ====================================//
     // --------- Metodos Privados ---------//
     // ====================================//
 
-    private NoABP inserir(NoABP i, int x) {
+    private NoABP inserirABP(NoABP i, int x) {
         if (i == null) {
             i = new NoABP(x);
         } else if (x < i.elemento) {
-            i.esq = inserir(i.esq, x);
+            i.esq = inserirABP(i.esq, x);
         } else if (x > i.elemento) {
-            i.dir = inserir(i.dir, x);
+            i.dir = inserirABP(i.dir, x);
         } else {
             System.out.println("ERRO");
         }
@@ -133,13 +133,13 @@ class ArvoreABP {
         return altura;
     }
 
-    private NoABP remover(NoABP i, int x) {
+    private NoABP removerABP(NoABP i, int x) {
         if (i == null) {
             System.out.println("ERRO");
         } else if (x < i.elemento) {
-            i.esq = remover(i.esq, x);
+            i.esq = removerABP(i.esq, x);
         } else if (x > i.elemento) {
-            i.dir = remover(i.dir, x);
+            i.dir = removerABP(i.dir, x);
         } else if (i.dir == null) { // Sem no a direita.
             i = i.esq;
         } else if (i.esq == null) { // Sem no a esquerda.
@@ -167,13 +167,13 @@ public class A_ArvoreBinariaABP {
         ArvoreABP arv = new ArvoreABP(5);
         arv.caminharCentral();
 
-        arv.inserir(2);
+        arv.inserirABP(2);
         arv.caminharCentral();
 
-        arv.inserir(3);
+        arv.inserirABP(3);
         arv.caminharCentral();
 
-        arv.inserir(1);
+        arv.inserirABP(1);
         arv.caminharCentral();
 
         System.out.println(arv.pesquisar(3));
@@ -182,8 +182,8 @@ public class A_ArvoreBinariaABP {
         System.out.println(arv.soma());
         System.out.println(arv.getAltura());
 
-        arv.inserir(0);
-        // arv.remover(0);
+        arv.inserirABP(0);
+        // arv.removerABP(0);
         arv.caminharCentral();
     }
 }

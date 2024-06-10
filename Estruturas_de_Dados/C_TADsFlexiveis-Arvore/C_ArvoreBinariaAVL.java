@@ -41,8 +41,12 @@ class ArvoreAVL {
     // --------- Metodos Publicos ---------//
     // ====================================//
 
+    public void inserirAVL(int x) throws Exception {
+        raiz = inserirAVL(raiz, x);
+    }
+
     public boolean pesquisar(int x) {
-        boolean flag = pesquisar(x, raiz);
+        boolean flag = pesquisar(raiz, x);
         return flag;
     }
 
@@ -52,28 +56,38 @@ class ArvoreAVL {
         System.out.println("]");
     }
 
-    public void inserirAVL(int x) throws Exception {
-        raiz = inserirAVL(x, raiz);
-    }
-
     public void removerAVL(int x) throws Exception {
-        raiz = removerAVL(x, raiz);
+        raiz = removerAVL(raiz, x);
     }
 
     // ====================================//
     // --------- Metodos Privados ---------//
     // ====================================//
 
-    private boolean pesquisar(int x, NoAVL i) {
+    private NoAVL inserirAVL(NoAVL i, int x) throws Exception {
+        if (i == null) {
+            i = new NoAVL(x);
+        } else if (x < i.elemento) {
+            i.esq = inserirAVL(i.esq, x);
+
+        } else if (x > i.elemento) {
+            i.dir = inserirAVL(i.dir, x);
+        } else {
+            throw new Exception("Erro");
+        }
+        return balancear(i);
+    }
+
+    private boolean pesquisar(NoAVL i, int x) {
         boolean flag = false;
         if (i == null) {
             return flag;
         } else if (x == i.elemento) {
             flag = true;
         } else if (x < i.elemento) {
-            flag = pesquisar(x, i.esq);
+            flag = pesquisar(i.esq, x);
         } else {
-            flag = pesquisar(x, i.dir);
+            flag = pesquisar(i.dir, x);
         }
         return flag;
     }
@@ -86,27 +100,13 @@ class ArvoreAVL {
         }
     }
 
-    private NoAVL inserirAVL(int x, NoAVL i) throws Exception {
-        if (i == null) {
-            i = new NoAVL(x);
-        } else if (x < i.elemento) {
-            i.esq = inserirAVL(x, i.esq);
-
-        } else if (x > i.elemento) {
-            i.dir = inserirAVL(x, i.dir);
-        } else {
-            throw new Exception("Erro");
-        }
-        return balancear(i);
-    }
-
-    private NoAVL removerAVL(int x, NoAVL i) throws Exception {
+    private NoAVL removerAVL(NoAVL i, int x) throws Exception {
         if (i == null) {
             throw new Exception("Erro");
         } else if (x < i.elemento) {
-            i.esq = removerAVL(x, i.esq);
+            i.esq = removerAVL(i.esq, x);
         } else if (x > i.elemento) {
-            i.dir = removerAVL(x, i.dir);
+            i.dir = removerAVL(i.dir, x);
         } else if (i.dir == null) { // Sem no a direita.
             i = i.esq;
         } else if (i.esq == null) { // Sem no a esquerda.
