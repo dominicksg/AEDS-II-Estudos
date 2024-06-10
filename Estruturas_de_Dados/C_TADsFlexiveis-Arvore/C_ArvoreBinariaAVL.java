@@ -23,7 +23,6 @@ class NoAVL {
     public static int getAltura(NoAVL no) {
         return (no == null) ? 0 : no.altura;
     }
-
 }
 
 class ArvoreAVL {
@@ -135,14 +134,13 @@ class ArvoreAVL {
                 no.setAltura();
             } else if (fator == 2) { // se desbalanceada para a direita
                 int fatorFilhoDir = NoAVL.getAltura(no.dir.dir) - NoAVL.getAltura(no.dir.esq);
-                // Se o filho da direita tambem estiver desbalanceado
-                if (fatorFilhoDir == -1) {
+                if (fatorFilhoDir == -1) { // Se o filho a direita tambem estiver desbalanceado
                     no.dir = rotacionarDir(no.dir);
                 }
                 no = rotacionarEsq(no);
-            } else if (fator == -2) {
+            } else if (fator == -2) { // Se desbalanceada para a esquerda
                 int fatorFilhoEsq = NoAVL.getAltura(no.esq.dir) - NoAVL.getAltura(no.esq.esq);
-                if (fatorFilhoEsq == 1) {
+                if (fatorFilhoEsq == 1) { // Se o filho a esquerda tambem estiver desbalanceado
                     no.esq = rotacionarEsq(no.esq);
                 }
                 no = rotacionarDir(no);
@@ -184,6 +182,26 @@ class ArvoreAVL {
 }
 
 public class C_ArvoreBinariaAVL {
+    public static void main(String args[]) throws Exception {
+        ArvoreAVL arv = new ArvoreAVL();
 
+        arv.caminharCentral();
+
+        arv.inserirAVL(2);
+        arv.caminharCentral();
+
+        arv.inserirAVL(3);
+        arv.caminharCentral();
+
+        arv.inserirAVL(1);
+        arv.caminharCentral();
+
+        System.out.println(arv.pesquisar(3));
+        System.out.println(arv.pesquisar(4));
+
+        arv.inserirAVL(0);
+        // arv.removerAVL(0);
+        arv.caminharCentral();
+    }
 }
 // cls && javac Practice.java && java Practice
