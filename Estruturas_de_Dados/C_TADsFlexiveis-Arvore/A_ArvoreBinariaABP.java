@@ -2,12 +2,12 @@ class NoABP {
     public int elemento;
     public NoABP dir, esq;
 
-    NoABP() {
+    public NoABP() {
         this.elemento = 0;
         this.dir = this.esq = null;
     }
 
-    NoABP(int x) {
+    public NoABP(int x) {
         this.elemento = x;
         this.dir = this.esq = null;
     }
@@ -16,11 +16,11 @@ class NoABP {
 class ArvoreABP {
     private NoABP raiz;
 
-    ArvoreABP() {
+    public ArvoreABP() {
         this.raiz = null;
     }
 
-    ArvoreABP(int x) {
+    public ArvoreABP(int x) {
         this.raiz = new NoABP(x);
     }
 
