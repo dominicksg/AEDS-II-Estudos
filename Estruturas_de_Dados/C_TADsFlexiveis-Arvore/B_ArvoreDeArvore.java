@@ -1,5 +1,3 @@
-package Estudos.EstruturasFlexiveis.Arvore.ArvoreDeArvore;
-
 class NoFilho {
     public String nome;
     public NoFilho esq, dir;
@@ -21,6 +19,10 @@ class ArvoreFilho {
     public ArvoreFilho() {
         this.raiz = new NoFilho();
     }
+
+    // ====================================//
+    // --------- Metodos Publicos ---------//
+    // ====================================//
 
     public void inserirFilho(String nome) {
         if (raiz.nome == "") {
@@ -57,6 +59,10 @@ class ArvoreFilho {
         return flag;
     }
 
+    // ====================================//
+    // --------- Metodos Privados ---------//
+    // ====================================//
+
     private boolean pesquisar(NoFilho i, String nome) {
         boolean flag = false;
         if (i == null) {
@@ -78,7 +84,6 @@ class ArvoreFilho {
             caminharCentral(i.dir);
         }
     }
-
 }
 
 // ------------------------------------------------------------------------------------//
@@ -128,9 +133,9 @@ class Arvore {
 
     public void pesquisar(String nome) {
         boolean flag = pesquisar(raiz, nome);
-        if(flag == true){
+        if (flag == true) {
             System.out.println("Nome encontrado");
-        }else{
+        } else {
             System.out.println("Nome nao encontrado");
         }
     }
@@ -198,15 +203,14 @@ class Arvore {
             flag = pesquisar(i.dir, nome);
         } else if (nome.charAt(0) < i.primeiraLetra) {
             flag = pesquisar(i.esq, nome);
-        }else{
-              flag = i.subArvore.pesquisar(nome);
+        } else {
+            flag = i.subArvore.pesquisar(nome);
         }
-            return flag;
-        }
-
+        return flag;
     }
+}
 
-    // ------------------------------------------------------------------------------------//
+// ------------------------------------------------------------------------------------//
 
 public class B_ArvoreDeArvore {
     public static void main(String args[]) {
@@ -223,7 +227,7 @@ public class B_ArvoreDeArvore {
         tree.inserirNome("Diego");
         tree.inserirNome("Fernando");
 
-        //tree.mostrar();
+        // tree.mostrar();
 
         tree.pesquisar("Pedro");
 

@@ -1,23 +1,23 @@
-class No {
+class NoABP {
     public int elemento;
-    public No dir, esq;
+    public NoABP dir, esq;
 
-    No() {
+    NoABP() {
         this.elemento = 0;
         this.dir = this.esq = null;
     }
 
-    No(int x) {
+    NoABP(int x) {
         this.elemento = x;
         this.dir = this.esq = null;
     }
 }
 
-class Arvore {
-    private No raiz;
+class ArvoreABP {
+    private NoABP raiz;
 
-    Arvore(int x) {
-        raiz = new No(x);
+    ArvoreABP(int x) {
+        raiz = new NoABP(x);
     }
 
     // ====================================//
@@ -54,9 +54,9 @@ class Arvore {
     // --------- Metodos Privados ---------//
     // ====================================//
 
-    private No inserir(No i, int x) {
+    private NoABP inserir(NoABP i, int x) {
         if (i == null) {
-            i = new No(x);
+            i = new NoABP(x);
         } else if (x > i.elemento) {
             i.dir = inserir(i.dir, x);
         } else if (x < i.elemento) {
@@ -67,7 +67,7 @@ class Arvore {
         return i;
     }
 
-    private boolean pesquisa(No i, int key) {
+    private boolean pesquisa(NoABP i, int key) {
         boolean flag = false;
         if (i == null) {
             return flag;
@@ -81,7 +81,7 @@ class Arvore {
         return flag;
     }
 
-    private void caminharCentral(No i) {
+    private void caminharCentral(NoABP i) {
         if (i != null) {
             caminharCentral(i.esq);
             System.out.print(i.elemento + " "); // Pre ordem, sysout antes, pos ordem depois
@@ -92,7 +92,7 @@ class Arvore {
     // Pos ordem prioriza os filhos, pq vem depois,
     // a raiz será o ultimo a ser impresso
 
-    private int soma(No i) {
+    private int soma(NoABP i) {
         // if (i == null) {
         // return 0;
         // }
@@ -111,7 +111,7 @@ class Arvore {
         return soma;
     }
 
-    private int getAltura(No i) {
+    private int getAltura(NoABP i) {
         if (i == null) {
             return -1;
         }
@@ -124,9 +124,9 @@ class Arvore {
     }
 }
 
-public class A_ArvoreBinaria {
+public class A_ArvoreBinariaABP {
     public static void main(String args[]) {
-        Arvore arv = new Arvore(5);
+        ArvoreABP arv = new ArvoreABP(5);
         arv.caminharCentral();
 
         arv.inserir(2);
