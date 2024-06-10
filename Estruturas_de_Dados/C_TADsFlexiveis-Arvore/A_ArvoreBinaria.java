@@ -20,6 +20,10 @@ class Arvore {
         raiz = new No(x);
     }
 
+    // ====================================//
+    // --------- Metodos Publicos ---------//
+    // ====================================//
+
     public void inserir(int x) {
         raiz = inserir(raiz, x);
     }
@@ -45,6 +49,10 @@ class Arvore {
         int altura = getAltura(raiz);
         return altura;
     }
+
+    // ====================================//
+    // --------- Metodos Privados ---------//
+    // ====================================//
 
     private No inserir(No i, int x) {
         if (i == null) {
@@ -81,8 +89,8 @@ class Arvore {
         }
     }
     // Pre ordem prioriza o pai, pq vem antes
-    // Pos ordem prioriza os filhos, pq vem depois, a raiz será o ultimo a ser
-    // impresso
+    // Pos ordem prioriza os filhos, pq vem depois,
+    // a raiz será o ultimo a ser impresso
 
     private int soma(No i) {
         // if (i == null) {
@@ -113,7 +121,6 @@ class Arvore {
         int altura = (alturaEsq > alturaDir) ? alturaEsq : alturaDir;
 
         return altura;
-
     }
 }
 
