@@ -111,7 +111,7 @@ class ArvoreRB {
         raiz.cor = false;
     }
 
-    boolean isNoTipo4(NoRB i) {
+    public boolean isNoTipo4(NoRB i) {
         return (i.esq != null && i.dir != null && i.esq.cor == true && i.dir.cor == true);
     }
 
@@ -135,7 +135,7 @@ class ArvoreRB {
 
     private void caminharCentral(NoRB i) {
         if (i != null) {
-            System.out.print(i.elemento + ((i.cor) ? "(p) " : "(b) ")); // black:red
+            System.out.print(i.elemento + ((i.cor) ? "(p) " : "(b) ")); // red:black
             caminharCentral(i.esq);
             caminharCentral(i.dir);
         }
@@ -144,6 +144,7 @@ class ArvoreRB {
     private void balancear(NoRB bisavo, NoRB avo, NoRB pai, NoRB i) {
         // Se o pai tambem e preto, reequilibrar a arvore, rotacionando o avo
         if (pai.cor == true) {
+
             // 4 tipos de reequilibrios e acoplamento
             if (pai.elemento > avo.elemento) { // rotacao a esquerda ou direita-esquerda
                 if (i.elemento > pai.elemento) {
@@ -151,6 +152,7 @@ class ArvoreRB {
                 } else {
                     avo = rotacaoDirEsq(avo);
                 }
+
             } else { // rotacao a direita ou esquerda-direita
                 if (i.elemento < pai.elemento) {
                     avo = rotacaoDir(avo);
@@ -165,12 +167,13 @@ class ArvoreRB {
             } else {
                 bisavo.dir = avo;
             }
+            
             // reestabelecer as cores apos a rotacao
             avo.cor = false;
             avo.esq.cor = avo.dir.cor = true;
             System.out.println("Reestabeler cores: avo(" + avo.elemento + "->branco) e avo.esq / avo.dir("
                     + avo.esq.elemento + "," + avo.dir.elemento + "-> pretos)");
-        } // if(pai.cor == true)
+        } 
     }
 
     private void inserir(int x, NoRB bisavo, NoRB avo, NoRB pai, NoRB i) throws Exception {
@@ -263,7 +266,6 @@ public class D_ArvoreBinariaRedBlack {
         arv.caminharCentral();
         arv.inserir(20);
         arv.caminharCentral();
-
     }
 }
 // cls && javac D_ArvoreBinariaRedBlack.java && java D_ArvoreBinariaRedBlack
