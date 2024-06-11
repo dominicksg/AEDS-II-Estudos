@@ -135,17 +135,27 @@ class ArvoreAVL {
     private NoAVL balancear(NoAVL no) throws Exception {
         if (no != null) {
             int fator = NoAVL.getAltura(no.dir) - NoAVL.getAltura(no.esq);
-            if (Math.abs(fator) <= 1) { // Se balanceada
+
+            // Se balanceada
+            if (Math.abs(fator) <= 1) {
                 no.setAltura();
-            } else if (fator == 2) { // se desbalanceada para a direita
+
+                // Se desbalanceada para a direita
+            } else if (fator == 2) {
                 int fatorFilhoDir = NoAVL.getAltura(no.dir.dir) - NoAVL.getAltura(no.dir.esq);
-                if (fatorFilhoDir == -1) { // Se o filho a direita tambem estiver desbalanceado
+
+                // Se o filho a direita tambem estiver desbalanceado
+                if (fatorFilhoDir == -1) {
                     no.dir = rotacionarDir(no.dir);
                 }
                 no = rotacionarEsq(no);
-            } else if (fator == -2) { // Se desbalanceada para a esquerda
+
+                // Se desbalanceada para a esquerda
+            } else if (fator == -2) {
                 int fatorFilhoEsq = NoAVL.getAltura(no.esq.dir) - NoAVL.getAltura(no.esq.esq);
-                if (fatorFilhoEsq == 1) { // Se o filho a esquerda tambem estiver desbalanceado
+
+                // Se o filho a esquerda tambem estiver desbalanceado
+                if (fatorFilhoEsq == 1) {
                     no.esq = rotacionarEsq(no.esq);
                 }
                 no = rotacionarDir(no);
