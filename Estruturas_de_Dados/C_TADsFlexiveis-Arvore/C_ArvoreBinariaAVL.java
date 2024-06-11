@@ -59,6 +59,11 @@ class ArvoreAVL {
         raiz = removerAVL(raiz, x);
     }
 
+    public int getAltura() {
+        int altura = getAltura(raiz);
+        return altura;
+    }
+
     // ====================================//
     // --------- Metodos Privados ---------//
     // ====================================//
@@ -178,6 +183,18 @@ class ArvoreAVL {
         noDir.setAltura(); // Atualizar o nivel do noDir
 
         return noDir;
+    }
+
+    private int getAltura(NoAVL i) {
+        if (i == null) {
+            return -1;
+        }
+        int alturaEsq = 1 + getAltura(i.esq);
+        int alturaDir = 1 + getAltura(i.dir);
+
+        int altura = (alturaEsq > alturaDir) ? alturaEsq : alturaDir;
+
+        return altura;
     }
 }
 

@@ -41,7 +41,6 @@ class ArvoreABP {
         System.out.print("[ ");
         caminharCentral(raiz);
         System.out.println("]");
-
     }
 
     public int soma() {
