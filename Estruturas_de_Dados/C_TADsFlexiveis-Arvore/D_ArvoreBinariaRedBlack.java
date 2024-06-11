@@ -135,8 +135,8 @@ class ArvoreRB {
 
     private void caminharCentral(NoRB i) {
         if (i != null) {
+            System.out.print(i.elemento + ((i.cor) ? "(p) " : "(b) ")); // black:red
             caminharCentral(i.esq);
-            System.out.println(i.elemento + ((i.cor) ? "(p) " : "(b) "));
             caminharCentral(i.dir);
         }
     }
@@ -238,7 +238,32 @@ class ArvoreRB {
 }
 
 public class D_ArvoreBinariaRedBlack {
-    public static void main(String args[]) {
+    public static void main(String args[]) throws Exception {
+        ArvoreRB arv = new ArvoreRB();
+
+        arv.inserir(4);
+        arv.caminharCentral(); // fazendo caminharPre
+        arv.inserir(35);
+        arv.caminharCentral();
+        arv.inserir(10);
+        arv.caminharCentral();
+        arv.inserir(13);
+        arv.caminharCentral();
+        arv.inserir(3);
+        arv.caminharCentral();
+        arv.inserir(30);
+        arv.caminharCentral();
+        arv.inserir(15);
+        arv.caminharCentral();
+        arv.inserir(12);
+        arv.caminharCentral();
+        arv.inserir(7);
+        arv.caminharCentral();
+        arv.inserir(40);
+        arv.caminharCentral();
+        arv.inserir(20);
+        arv.caminharCentral();
 
     }
 }
+// cls && javac D_ArvoreBinariaRedBlack.java && java D_ArvoreBinariaRedBlack
