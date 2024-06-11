@@ -161,7 +161,8 @@ class ArvoreABP {
     }
 }
 
-public class A_ArvoreBinariaABP {
+public class A_ArvoreBinariaABP { 
+    // Arvore Binaria de Pesquisa ou Binary Search Tree (BST)
     public static void main(String args[]) {
         ArvoreABP arv = new ArvoreABP();
 

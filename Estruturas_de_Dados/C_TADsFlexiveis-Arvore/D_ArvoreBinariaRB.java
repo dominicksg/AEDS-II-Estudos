@@ -237,10 +237,9 @@ class ArvoreRB {
         no.esq = rotacaoEsq(no.esq);
         return rotacaoDir(no);
     }
-
 }
 
-public class D_ArvoreBinariaRedBlack {
+public class D_ArvoreBinariaRB { // RedBlack
     public static void main(String args[]) throws Exception {
         ArvoreRB arv = new ArvoreRB();
 
