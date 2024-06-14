@@ -141,41 +141,6 @@ class ArvoreRB {
         }
     }
 
-    private void balancear(NoRB bisavo, NoRB avo, NoRB pai, NoRB i) {
-        // Se o pai tambem e preto, reequilibrar a arvore, rotacionando o avo
-        if (pai.cor == true) {
-
-            // 4 tipos de reequilibrios e acoplamento
-            if (pai.elemento > avo.elemento) { // rotacao a esquerda ou direita-esquerda
-                if (i.elemento > pai.elemento) {
-                    avo = rotacaoEsq(avo);
-                } else {
-                    avo = rotacaoDirEsq(avo);
-                }
-
-            } else { // rotacao a direita ou esquerda-direita
-                if (i.elemento < pai.elemento) {
-                    avo = rotacaoDir(avo);
-                } else {
-                    avo = rotacaoEsqDir(avo);
-                }
-            }
-            if (bisavo == null) {
-                raiz = avo;
-            } else if (avo.elemento < bisavo.elemento) {
-                bisavo.esq = avo;
-            } else {
-                bisavo.dir = avo;
-            }
-            
-            // reestabelecer as cores apos a rotacao
-            avo.cor = false;
-            avo.esq.cor = avo.dir.cor = true;
-            System.out.println("Reestabeler cores: avo(" + avo.elemento + "->branco) e avo.esq / avo.dir("
-                    + avo.esq.elemento + "," + avo.dir.elemento + "-> pretos)");
-        } 
-    }
-
     private void inserir(int x, NoRB bisavo, NoRB avo, NoRB pai, NoRB i) throws Exception {
         if (i == null) {
             if (x < pai.elemento) {
@@ -204,6 +169,41 @@ class ArvoreRB {
             } else {
                 throw new Exception("Erro inserir (elemento repetido)!");
             }
+        }
+    }
+
+    private void balancear(NoRB bisavo, NoRB avo, NoRB pai, NoRB i) {
+        // Se o pai tambem e preto, reequilibrar a arvore, rotacionando o avo
+        if (pai.cor == true) {
+
+            // 4 tipos de reequilibrios e acoplamento
+            if (pai.elemento > avo.elemento) { // rotacao a esquerda ou direita-esquerda
+                if (i.elemento > pai.elemento) {
+                    avo = rotacaoEsq(avo);
+                } else {
+                    avo = rotacaoDirEsq(avo);
+                }
+
+            } else { // rotacao a direita ou esquerda-direita
+                if (i.elemento < pai.elemento) {
+                    avo = rotacaoDir(avo);
+                } else {
+                    avo = rotacaoEsqDir(avo);
+                }
+            }
+            if (bisavo == null) {
+                raiz = avo;
+            } else if (avo.elemento < bisavo.elemento) {
+                bisavo.esq = avo;
+            } else {
+                bisavo.dir = avo;
+            }
+
+            // reestabelecer as cores apos a rotacao
+            avo.cor = false;
+            avo.esq.cor = avo.dir.cor = true;
+            System.out.println("Reestabeler cores: avo(" + avo.elemento + "->branco) e avo.esq / avo.dir("
+                    + avo.esq.elemento + "," + avo.dir.elemento + "-> pretos)");
         }
     }
 
