@@ -19,8 +19,8 @@ class Celula {
 }
 
 class Lista {
-    private Celula primeiro; // Primeira celula: SEM elemento valido.
-    private Celula ultimo; // Ultima celula: COM elemento valido.
+    public Celula primeiro; // Primeira celula: SEM elemento valido.
+    public Celula ultimo; // Ultima celula: COM elemento valido.
 
     public Lista() {
         primeiro = new Celula(-1);
@@ -182,27 +182,68 @@ class HashIndireto {
         return tabela[pos].pesquisar(elemento);
     }
 
-    public void inserirInicio(int elemento) {
+    public void inserirFim(int elemento) {
         int pos = h(elemento);
-        tabela[pos].inserirInicio(elemento);
+        tabela[pos].inserirFim(elemento);
     }
 
-    // public int remover(int elemento) throws Exception {
-    // int pos = h(elemento);
-    // int resp = tabela[pos].remover(elemento);
-    // if (resp == NULO) {
-    // throw new Exception("Erro ao remover! Elemento não encontrado.");
-    // }
-    // return resp;
-    // }
+    public int remover(int elemento) throws Exception {
+        int num = -1;
+        int pos = h(elemento);
+        int posLista = tabela[pos].getPosicao(elemento);
+        if (posLista != NULO) {
+            num = tabela[pos].remover(posLista);
+        } else {
+            throw new Exception("Erro ao remover! Elemento não encontrado.");
+        }
+        return num;
+    }
 
+    public void mostrar() {
+        for (int i = 0; i < tamanho; i++) { // ou tabela.length
+            if (tabela[i].primeiro != null) {
+                tabela[i].mostrar();
+            }
+        }
+    }
 }
 
 public class C_HashIndiretoLista {
     public static void main(String args[]) {
         HashIndireto tabelaHash = new HashIndireto();
 
+        System.out.println("========== Inserindo ==========");
+        tabelaHash.inserirFim(0);
+        tabelaHash.mostrar();
+
+        System.out.println("========== Inserindo ==========");
+        tabelaHash.inserirFim(3);
+        tabelaHash.mostrar();
+
+        System.out.println("========== Inserindo ==========");
+        tabelaHash.inserirFim(4);
+        tabelaHash.mostrar();
+
+        System.out.println("========== Inserindo ==========");
+        tabelaHash.inserirFim(2);
+        tabelaHash.mostrar();
+
+        System.out.println("========== Inserindo ==========");
+        tabelaHash.inserirFim(5);
+        tabelaHash.mostrar();
+
+        System.out.println("========== Inserindo ==========");
+        tabelaHash.inserirFim(1);
+        tabelaHash.mostrar();
+
+        System.out.println("========== Inserindo ==========");
+        tabelaHash.inserirFim(7);
+        tabelaHash.mostrar();
+
+        System.out.println(tabelaHash.pesquisar(6));
+        System.out.println(tabelaHash.pesquisar(0));
+        System.out.println(tabelaHash.pesquisar(7));
     }
 
 }
-// cls && javac D_ArvoreBinariaRedBlack.java && java D_ArvoreBinariaRedBlack
+// cls && javac C_HashIndiretoLista.java && java C_HashIndiretoLista
