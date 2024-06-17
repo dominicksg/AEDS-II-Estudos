@@ -58,6 +58,12 @@ class HashRehash {
         return flag;
     }
 
+    public boolean remover(int elemento) {
+        boolean resp = false;
+        // ...
+        return resp;
+    }
+
     public void mostrar() {
         System.out.print("Vetor inteiro = [ ");
 
