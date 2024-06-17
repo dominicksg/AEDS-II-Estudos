@@ -1,15 +1,15 @@
-class Hash {
+class HashReserva {
     int tabela[];
     int m1, m2, m, reserva;
     final int NULO = -1;
     // A palavra-chave "final" é usada para declarar constantes, que são variáveis
     // cujo valor não pode ser alterado após a inicialização.
 
-    public Hash() {
+    public HashReserva() {
         this(13, 7);
     }
 
-    public Hash(int m1, int m2) {
+    public HashReserva(int m1, int m2) {
         this.m1 = m1;
         this.m2 = m2;
         this.m = m1 + m2;
@@ -102,7 +102,7 @@ class Hash {
 
 public class A_HashDiretoReserva {
     public static void main(String[] args) {
-        Hash tabelaHash = new Hash();
+        HashReserva tabelaHash = new HashReserva();
         // System.out.println(0 % 13);
 
         System.out.println("========== Inserindo ==========");
@@ -147,10 +147,9 @@ public class A_HashDiretoReserva {
         tabelaHash.mostrarReserva();
         tabelaHash.mostrarTudo();
 
-        // System.out.println(tabelaHash.pesquisar(6));
-
-        // ----------------------------//
-
+        System.out.println(tabelaHash.pesquisar(6));
+        System.out.println(tabelaHash.pesquisar(0));
+        System.out.println(tabelaHash.pesquisar(13));
     }
 }
 
