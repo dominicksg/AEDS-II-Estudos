@@ -7,14 +7,21 @@ class Celula {
         this.prox = null;
     }
 
-    public Celula(int n) {
-        this.elemento = n;
+    public Celula(int x) {
+        this.elemento = x;
         this.prox = null;
+    }
+
+    Celula(int x, Celula prox) {
+        this.elemento = x;
+        this.prox = prox;
     }
 }
 
 class ListaSimples {
     private Celula primeiro, ultimo;
+    // Primeira celula: SEM elemento valido.
+    // Ultima celula: COM elemento valido.
 
     public ListaSimples() {
         primeiro = new Celula();
@@ -102,6 +109,42 @@ class ListaSimples {
         return num;
     }
 
+    public int tamanho() {
+        int tam = 0;
+        for (Celula i = primeiro; i != ultimo; i = i.prox) { // Nao conta o "ultimo", mas conta "primeiro"
+            tam++;
+        }
+        return tam;
+        // Retorna o numero de elementos DENTRO da lista
+        // Então, se houver 3 numeros, ele conta 2 numeros,
+        // + a primeira celula vazia = 3
+    }
+
+    public boolean pesquisar(int x) {
+        boolean retorno = false;
+        for (Celula i = primeiro.prox; i != null; i = i.prox) {
+            if (i.elemento == x) {
+                retorno = true;
+                i = ultimo;
+            }
+        }
+        return retorno;
+    }
+
+    public int getPosicao(int x) {
+        boolean flag = false;
+        int count = -1;
+
+        for (Celula i = primeiro; i != null; i = i.prox) {
+            if (i.elemento == x) {
+                flag = true;
+                i = ultimo;
+            }
+            count++;
+        }
+        return (flag) ? count : -1;
+    }
+
     public void mostrar() {
         Celula i;
         System.out.print("[ ");
@@ -110,14 +153,6 @@ class ListaSimples {
             System.out.print(i.elemento + " ");
         }
         System.out.println("]");
-    }
-
-    public int tamanho() {
-        int tam = 0;
-        for (Celula i = primeiro; i != ultimo; i = i.prox) { // Nao conta o "ultimo", mas conta "primeiro"
-            tam++;
-        }
-        return tam;
     }
 }
 
