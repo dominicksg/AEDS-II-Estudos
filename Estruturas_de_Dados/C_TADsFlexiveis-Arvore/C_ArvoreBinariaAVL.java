@@ -80,7 +80,7 @@ class ArvoreAVL {
         } else {
             throw new Exception("Erro");
         }
-        return balancear(i); // Diferença da BST aqui
+        return balancear(i);
     }
 
     private boolean pesquisar(NoAVL i, int x) {
@@ -149,6 +149,7 @@ class ArvoreAVL {
                 if (fatorFilhoDir == -1) {
                     no.dir = rotacionarDir(no.dir);
                 }
+
                 no = rotacionarEsq(no);
 
                 // Se desbalanceada para a esquerda
@@ -159,6 +160,7 @@ class ArvoreAVL {
                 if (fatorFilhoEsq == 1) {
                     no.esq = rotacionarEsq(no.esq);
                 }
+
                 no = rotacionarDir(no);
             } else {
                 throw new Exception(
@@ -166,20 +168,6 @@ class ArvoreAVL {
             }
         }
         return no;
-    }
-
-    private NoAVL rotacionarDir(NoAVL no) {
-        System.out.println("Rotacionar DIR(" + no.elemento + ")");
-        NoAVL noEsq = no.esq;
-        NoAVL noEsqDir = noEsq.dir;
-
-        noEsq.dir = no;
-        no.esq = noEsqDir;
-
-        no.setAltura(); // Atualizar o nivel do no
-        noEsq.setAltura(); // Atualizar o nivel do noEsq
-
-        return noEsq;
     }
 
     private NoAVL rotacionarEsq(NoAVL no) {
@@ -194,6 +182,25 @@ class ArvoreAVL {
         noDir.setAltura(); // Atualizar o nivel do noDir
 
         return noDir;
+
+        // O no(raiz) vai para a esquerda, e o noDir vira raiz
+        // Desenhe 1,2,5 (raiz=2)
+    }
+
+    private NoAVL rotacionarDir(NoAVL no) {
+        System.out.println("Rotacionar DIR(" + no.elemento + ")");
+        NoAVL noEsq = no.esq;
+        NoAVL noEsqDir = noEsq.dir;
+
+        noEsq.dir = no;
+        no.esq = noEsqDir;
+
+        no.setAltura(); // Atualizar o nivel do no
+        noEsq.setAltura(); // Atualizar o nivel do noEsq
+
+        return noEsq;
+
+        // O no(raiz) vai para a direita, e o noEsq vira raiz
     }
 
     private int getAltura(NoAVL i) {
@@ -234,4 +241,7 @@ public class C_ArvoreBinariaAVL {
     }
 }
 // cls && javac C_ArvoreBinariaAVL.java && java C_ArvoreBinariaAVL
-// Diferença da BST aqui
+
+// Diferença do código da BST e da AVL é no
+// atributo da classe altura e seus metodos
+// e nos retornos com o método balancear

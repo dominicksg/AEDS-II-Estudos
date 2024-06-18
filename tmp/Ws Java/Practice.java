@@ -18,13 +18,12 @@ class No {
         this.altura = altura;
     }
 
-    public static int getAltura(No i) {
-        return (i == null) ? 0 : i.altura;
+    public static int getAltura(No no) {
     }
 
     public void setAltura() {
-        this.altura = 1 + Math.max(getAltura(esq), getAltura(dir));
     }
+
 }
 
 class Arvore {
@@ -54,12 +53,8 @@ class Arvore {
         caminharCentral(raiz);
     }
 
-    public void remover(int x) {
+    public void remover(int x) throws Exception {
         raiz = remover(raiz, x);
-    }
-
-    public int getAltura() {
-        return getAltura(raiz);
     }
 
     // ====================================//
@@ -101,22 +96,41 @@ class Arvore {
         }
     }
 
-    // maioresq
-    // balancear
-    // rotacionardir
-    // rotacionaresq
-
-
-
-    private int getAltura(No i) {
-        int alturaEsq = 0;
-        int alturaDir = 0;
-        if (i != null) {
-            alturaEsq = getAltura(i.esq) + 1;
-            alturaDir = getAltura(i.dir) + 1;
+    private No remover(No i, int x) throws Exception {
+        if (i == null) {
+            throw new Exception("Erro");
+        } else if (x < i.elemento) {
+            i.esq = remover(i.esq, x);
+        } else if (x > i.elemento) {
+            i.dir = remover(i.dir, x);
+        } else if (i.dir == null) {
+            i = i.esq;
+        } else if (i.esq == null) {
+            i = i.dir;
+        } else {
+            i.esq = maiorEsq(i, i.esq);
         }
+        return balancear(i);
+    }
 
-        return (alturaEsq < alturaDir) ? alturaDir : alturaEsq;
+    private No maiorEsq(No i, No j) {
+        if (j.dir == null) {
+            i.elemento = j.elemento;
+            j = j.esq;
+        }
+        j.dir = maiorEsq(i, j.dir);
+        return j;
+    }
+
+    private No balancear(No i) throws Exception {
+
+    }
+
+    private No rotacionarEsq(No no) {
+
+    }
+
+    private No rotacionarDir(No no) {
 
     }
 }
