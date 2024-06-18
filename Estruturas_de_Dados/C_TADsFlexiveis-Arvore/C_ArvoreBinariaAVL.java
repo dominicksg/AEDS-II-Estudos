@@ -18,12 +18,12 @@ class NoAVL {
         this.altura = altura;
     }
 
-    public void setAltura() {
-        this.altura = 1 + Math.max(getAltura(esq), getAltura(dir));
-    }
-
     public static int getAltura(NoAVL no) {
         return (no == null) ? 0 : no.altura;
+    }
+
+    public void setAltura() {
+        this.altura = 1 + Math.max(getAltura(esq), getAltura(dir));
     }
 }
 

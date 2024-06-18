@@ -18,7 +18,12 @@ class No {
         this.altura = altura;
     }
 
-    public
+    public static int getAltura(No i) {
+        return (i == null) ? 0 : i.altura;
+    }
+
+    public void setAltura() {
+    }
 }
 
 class Arvore {
