@@ -147,6 +147,8 @@ public class A_ArvoreTrie {
             System.out.println("Pesquisar(" + array[i] + "):" + arv.pesquisar(array[i]));
         }
 
+        System.out.println(arv.contarAs());
+
         // String s = "ABACA";
         // System.out.println("Pesquisar(" + s + "):" + arv.pesquisar(s));
 
