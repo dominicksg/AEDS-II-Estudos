@@ -17,6 +17,8 @@ class No {
         this.dir = dir;
         this.altura = altura;
     }
+
+    public
 }
 
 class Arvore {
