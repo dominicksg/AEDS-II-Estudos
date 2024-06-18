@@ -184,7 +184,7 @@ class ArvoreAVL {
         return noDir;
 
         // O no(raiz) vai para a esquerda, e o noDir vira raiz
-        // Desenhe 1,2,5 (raiz=2)
+        // Desenhe a imagem nesta pasta (balanceamento)
     }
 
     private NoAVL rotacionarDir(NoAVL no) {
