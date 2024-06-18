@@ -127,9 +127,16 @@ class ArvoreABP {
         int alturaEsq = 1 + getAltura(i.esq);
         int alturaDir = 1 + getAltura(i.dir);
 
-        int altura = (alturaEsq > alturaDir) ? alturaEsq : alturaDir;
+        return (alturaEsq > alturaDir) ? alturaEsq : alturaDir;
 
-        return altura;
+        // int alturaDir = 0;
+        // int alturaEsq = 0;
+        // if (i != null) {
+        // alturaEsq = getAltura(i.esq) + 1;
+        // alturaDir = getAltura(i.dir) + 1;
+        // }
+
+        // return (alturaEsq > alturaDir) ? alturaEsq : alturaDir;
     }
 
     private NoABP removerABP(NoABP i, int x) {
@@ -161,7 +168,7 @@ class ArvoreABP {
     }
 }
 
-public class A_ArvoreBinariaABP { 
+public class A_ArvoreBinariaABP {
     // Arvore Binaria de Pesquisa ou Binary Search Tree (BST)
     public static void main(String args[]) {
         ArvoreABP arv = new ArvoreABP();

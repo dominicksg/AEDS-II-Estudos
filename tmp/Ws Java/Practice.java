@@ -1,189 +1,150 @@
-class NoAVL {
+class No {
     public int elemento;
-    public NoAVL esq, dir;
+    public No esq, dir;
     public int altura;
 
-    public NoAVL(int x) {
-        this.elemento = x;
-        this.altura = 1; // Pq 1?
+    public No() {
+        this(-1, 0, null, null);
+    }
+
+    public No(int elemento) {
+        this(elemento, 0, null, null); // OLHAR AQUI
+    }
+
+    public No(int elemento, int altura, No esq, No dir) {
+        this.elemento = elemento;
+        this.altura = altura;
         this.esq = this.dir = null;
     }
-
-    public NoAVL(int x, NoAVL esq, NoAVL dir, int altura) {
-        this.elemento = x;
-        this.esq = esq;
-        this.dir = dir;
-        this.altura = altura;
-    }
-
-    public void setAltura() {
-        this.altura = 1 + Math.max(getAltura(esq), getAltura(dir));
-    }
-
-    public static int getAltura(NoAVL no) {
-        return (no == null) ? 0 : no.altura;
-    }
-
 }
 
-class ArvoreAVL {
-    private NoAVL raiz;
+class Arvore {
+    private No raiz;
 
-    public ArvoreAVL() {
-        this.raiz = null;
+    Arvore() {
+        this(-1);
     }
 
-    public ArvoreAVL(int x) {
-        raiz = new NoAVL(x);
+    Arvore(int elemento) {
+        this.raiz = new No(elemento);
     }
 
     // ====================================//
     // --------- Metodos Publicos ---------//
     // ====================================//
 
+    public void inserir(int x) {
+        this.raiz = inserir(raiz, x);
+    }
+
     public boolean pesquisar(int x) {
-        boolean flag = pesquisar(x, raiz);
-        return flag;
+        return pesquisar(raiz, x);
     }
 
     public void caminharCentral() {
-        System.out.println("[ ");
         caminharCentral(raiz);
-        System.out.println("]");
     }
 
-    public void inserirAVL(int x) throws Exception {
-        raiz = inserirAVL(x, raiz);
+    public int soma() {
+        return soma(raiz);
     }
 
-    public void removerAVL(int x) throws Exception {
-        raiz = removerAVL(x, raiz);
+    public int getAltura() {
+        return getAltura(raiz);
+    }
+
+    public No remover(int x) {
+        raiz = remover(raiz, x);
     }
 
     // ====================================//
     // --------- Metodos Privados ---------//
     // ====================================//
 
-    private boolean pesquisar(int x, NoAVL i) {
+    private No inserir(No i, int x) {
+        if (i == null) {
+            i = new No(x);
+        } else if (x < i.elemento) {
+            i.esq = inserir(i.esq, x);
+        } else if (x > i.elemento) {
+            i.dir = inserir(i.dir, x);
+        } else {
+            System.out.println("ERRO");
+        }
+        return i;
+    }
+
+    private boolean pesquisar(No i, int x) {
         boolean flag = false;
         if (i == null) {
             return flag;
         } else if (x == i.elemento) {
             flag = true;
         } else if (x < i.elemento) {
-            flag = pesquisar(x, i.esq);
+            flag = pesquisar(i.esq, x);
         } else {
-            flag = pesquisar(x, i.dir);
+            flag = pesquisar(i.dir, x);
         }
         return flag;
     }
 
-    private void caminharCentral(NoAVL i) {
+    private void caminharCentral(No i) {
         if (i != null) {
             caminharCentral(i.esq);
-            System.out.println(i.elemento + " ");
+            System.out.println(i.elemento);
             caminharCentral(i.dir);
         }
     }
 
-    private NoAVL inserirAVL(int x, NoAVL i) throws Exception {
-        if (i == null) {
-            i = new NoAVL(x);
-        } else if (x < i.elemento) {
-            i.esq = inserirAVL(x, i.esq);
-
-        } else if (x > i.elemento) {
-            i.dir = inserirAVL(x, i.dir);
-        } else {
-            throw new Exception("Erro");
+    private int soma(No i) {
+        int soma = 0;
+        if (i != null) {
+            soma = i.elemento + soma(i.esq) + soma(i.dir);
         }
-        return balancear(i);
+        return soma;
     }
 
-    private NoAVL removerAVL(int x, NoAVL i) throws Exception {
+    private int getAltura(No i) {
+        int alturaDir = 0;
+        int alturaEsq = 0;
+        if (i != null) {
+            alturaEsq = getAltura(i.esq) + 1;
+            alturaDir = getAltura(i.dir) + 1;
+        }
+
+        return (alturaEsq > alturaDir) ? alturaEsq : alturaDir;
+    }
+
+    private No remover(No i, int x) {
         if (i == null) {
-            throw new Exception("Erro");
+            System.out.println("ERRO");
         } else if (x < i.elemento) {
-            i.esq = removerAVL(x, i.esq);
+            i.esq = remover(i.esq, x);
         } else if (x > i.elemento) {
-            i.dir = removerAVL(x, i.dir);
-        } else if (i.dir == null) { // Sem no a direita.
+            i.dir = remover(i.dir, x);
+        } else if (i.dir == null) {
             i = i.esq;
-        } else if (i.esq == null) { // Sem no a esquerda.
+        } else if (i.dir == null) {
             i = i.dir;
         } else {
-            i.esq = maiorEsq(i, i.esq); // No a esquerda e no a direita.
+            i.esq = maiorEsq(i, i.esq);
         }
-        return balancear(i);
+        return i;
     }
 
-    private NoAVL maiorEsq(NoAVL i, NoAVL j) {
-        // Encontrou o maximo da subarvore esquerda.
+    private No maiorEsq(No i, No j) {
         if (j.dir == null) {
-            i.elemento = j.elemento;// Substitui i por j.
-            j = j.esq; // Substitui j por j.ESQ.
-        } else { // Existe no a direita.
-            j.dir = maiorEsq(i, j.dir); // Caminha para direita.
+            i.elemento = j.elemento;
+            j = j.esq;
+        } else {
+            j.dir = maiorEsq(i, j.dir);
         }
         return j;
     }
 
-    private NoAVL balancear(NoAVL no) throws Exception {
-        if (no != null) {
-            int fator = NoAVL.getAltura(no.dir) - NoAVL.getAltura(no.esq);
-            if (Math.abs(fator) <= 1) { // Se balanceada
-                no.setAltura();
-            } else if (fator == 2) { // se desbalanceada para a direita
-                int fatorFilhoDir = NoAVL.getAltura(no.dir.dir) - NoAVL.getAltura(no.dir.esq);
-                // Se o filho da direita tambem estiver desbalanceado
-                if (fatorFilhoDir == -1) {
-                    no.dir = rotacionarDir(no.dir);
-                }
-                no = rotacionarEsq(no);
-            } else if (fator == -2) {
-                int fatorFilhoEsq = NoAVL.getAltura(no.esq.dir) - NoAVL.getAltura(no.esq.esq);
-                if (fatorFilhoEsq == 1) {
-                    no.esq = rotacionarEsq(no.esq);
-                }
-                no = rotacionarDir(no);
-            } else {
-                throw new Exception(
-                        "Erro no (" + no.elemento + ") com fator de balanceamento (" + fator + ") invalido!");
-            }
-        }
-        return no;
-    }
-
-    private NoAVL rotacionarDir(NoAVL no) {
-        System.out.println("Rotacionar DIR(" + no.elemento + ")");
-        NoAVL noEsq = no.esq;
-        NoAVL noEsqDir = noEsq.dir;
-
-        noEsq.dir = no;
-        no.esq = noEsqDir;
-
-        no.setAltura(); // Atualizar o nivel do no
-        noEsq.setAltura(); // Atualizar o nivel do noEsq
-
-        return noEsq;
-    }
-
-    private NoAVL rotacionarEsq(NoAVL no) {
-        System.out.println("Rotacionar ESQ(" + no.elemento + ")");
-        NoAVL noDir = no.dir;
-        NoAVL noDirEsq = noDir.esq;
-
-        noDir.esq = no;
-        no.dir = noDirEsq;
-
-        no.setAltura(); // Atualizar o nivel do no
-        noDir.setAltura(); // Atualizar o nivel do noDir
-
-        return noDir;
-    }
 }
 
 public class Practice {
-
+    public static void main(String args[]) {
+    }
 }
-// cls && javac Practice.java && java Practice
