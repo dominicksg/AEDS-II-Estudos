@@ -75,13 +75,12 @@ class ArvoreAVL {
             i = new NoAVL(x);
         } else if (x < i.elemento) {
             i.esq = inserirAVL(i.esq, x);
-
         } else if (x > i.elemento) {
             i.dir = inserirAVL(i.dir, x);
         } else {
             throw new Exception("Erro");
         }
-        return balancear(i);
+        return balancear(i); // Diferença da BST aqui
     }
 
     private boolean pesquisar(NoAVL i, int x) {
@@ -204,9 +203,7 @@ class ArvoreAVL {
         int alturaEsq = 1 + getAltura(i.esq);
         int alturaDir = 1 + getAltura(i.dir);
 
-        int altura = (alturaEsq > alturaDir) ? alturaEsq : alturaDir;
-
-        return altura;
+        return (alturaEsq > alturaDir) ? alturaEsq : alturaDir;
     }
 }
 
@@ -237,3 +234,4 @@ public class C_ArvoreBinariaAVL {
     }
 }
 // cls && javac C_ArvoreBinariaAVL.java && java C_ArvoreBinariaAVL
+// Diferença da BST aqui

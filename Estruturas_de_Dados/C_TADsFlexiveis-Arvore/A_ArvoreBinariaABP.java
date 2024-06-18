@@ -104,8 +104,8 @@ class ArvoreABP {
         // if (i == null) {
         // return 0;
         // }
-        // int soma = i.elemento + soma(i.esq) + soma(i.dir); // são os "i.elemento" que
-        // realizam a soma
+        // int soma = i.elemento + soma(i.esq) + soma(i.dir);
+        // // são os "i.elemento" que realizam a soma
         // // int soma = (i == null) ? 0 : i.elemento + soma(i.esq) + soma(i.dir);
         // return soma;
 
@@ -121,22 +121,23 @@ class ArvoreABP {
     }
 
     private int getAltura(NoABP i) {
-        if (i == null) {
-            return -1;
-        }
-        int alturaEsq = 1 + getAltura(i.esq);
-        int alturaDir = 1 + getAltura(i.dir);
-
-        return (alturaEsq > alturaDir) ? alturaEsq : alturaDir;
-
-        // int alturaDir = 0;
-        // int alturaEsq = 0;
-        // if (i != null) {
-        // alturaEsq = getAltura(i.esq) + 1;
-        // alturaDir = getAltura(i.dir) + 1;
+        // if (i == null) {
+        // return -1;
         // }
+        // int alturaEsq = 1 + getAltura(i.esq);
+        // int alturaDir = 1 + getAltura(i.dir);
 
         // return (alturaEsq > alturaDir) ? alturaEsq : alturaDir;
+
+        // --------- Seguindo a lógica do caminharCentral ---------//
+        int alturaDir = 0;
+        int alturaEsq = 0;
+        if (i != null) {
+            alturaEsq = getAltura(i.esq) + 1;
+            alturaDir = getAltura(i.dir) + 1;
+        }
+
+        return (alturaEsq > alturaDir) ? alturaEsq : alturaDir;
     }
 
     private NoABP removerABP(NoABP i, int x) {

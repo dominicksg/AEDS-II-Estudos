@@ -23,6 +23,7 @@ class No {
     }
 
     public void setAltura() {
+        this.altura = 1 + Math.max(getAltura(esq), getAltura(dir));
     }
 }
 
@@ -30,7 +31,7 @@ class Arvore {
     private No raiz;
 
     Arvore() {
-        this(-1);
+        this.raiz = null;
     }
 
     Arvore(int elemento) {
@@ -41,8 +42,8 @@ class Arvore {
     // --------- Metodos Publicos ---------//
     // ====================================//
 
-    public void inserir(int x) {
-        this.raiz = inserir(raiz, x);
+    public void inserir(int x) throws Exception {
+        raiz = inserir(raiz, x);
     }
 
     public boolean pesquisar(int x) {
@@ -53,23 +54,19 @@ class Arvore {
         caminharCentral(raiz);
     }
 
-    public int soma() {
-        return soma(raiz);
+    public void remover(int x) {
+        raiz = remover(raiz, x);
     }
 
     public int getAltura() {
         return getAltura(raiz);
     }
 
-    public No remover(int x) {
-        raiz = remover(raiz, x);
-    }
-
     // ====================================//
     // --------- Metodos Privados ---------//
     // ====================================//
 
-    private No inserir(No i, int x) {
+    private No inserir(No i, int x) throws Exception {
         if (i == null) {
             i = new No(x);
         } else if (x < i.elemento) {
@@ -77,16 +74,16 @@ class Arvore {
         } else if (x > i.elemento) {
             i.dir = inserir(i.dir, x);
         } else {
-            System.out.println("ERRO");
+            throw new Exception("Erro");
         }
-        return i;
+        return balancear(i);
     }
 
     private boolean pesquisar(No i, int x) {
         boolean flag = false;
         if (i == null) {
             return flag;
-        } else if (x == i.elemento) {
+        } else if (i.elemento == x) {
             flag = true;
         } else if (x < i.elemento) {
             flag = pesquisar(i.esq, x);
@@ -104,55 +101,29 @@ class Arvore {
         }
     }
 
-    private int soma(No i) {
-        int soma = 0;
-        if (i != null) {
-            soma = i.elemento + soma(i.esq) + soma(i.dir);
-        }
-        return soma;
-    }
+    // maioresq
+    // balancear
+    // rotacionardir
+    // rotacionaresq
+
+
 
     private int getAltura(No i) {
-        int alturaDir = 0;
         int alturaEsq = 0;
+        int alturaDir = 0;
         if (i != null) {
             alturaEsq = getAltura(i.esq) + 1;
             alturaDir = getAltura(i.dir) + 1;
         }
 
-        return (alturaEsq > alturaDir) ? alturaEsq : alturaDir;
-    }
+        return (alturaEsq < alturaDir) ? alturaDir : alturaEsq;
 
-    private No remover(No i, int x) {
-        if (i == null) {
-            System.out.println("ERRO");
-        } else if (x < i.elemento) {
-            i.esq = remover(i.esq, x);
-        } else if (x > i.elemento) {
-            i.dir = remover(i.dir, x);
-        } else if (i.dir == null) {
-            i = i.esq;
-        } else if (i.dir == null) {
-            i = i.dir;
-        } else {
-            i.esq = maiorEsq(i, i.esq);
-        }
-        return i;
     }
-
-    private No maiorEsq(No i, No j) {
-        if (j.dir == null) {
-            i.elemento = j.elemento;
-            j = j.esq;
-        } else {
-            j.dir = maiorEsq(i, j.dir);
-        }
-        return j;
-    }
-
 }
 
 public class Practice {
     public static void main(String args[]) {
     }
 }
+
+// cls && javac Practice.java && java Practice
