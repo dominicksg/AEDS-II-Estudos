@@ -4,17 +4,18 @@ class No {
     public int altura;
 
     public No() {
-        this(-1, 0, null, null);
+        this(-1, null, null, 1);
     }
 
-    public No(int elemento) {
-        this(elemento, 0, null, null); // OLHAR AQUI
+    public No(int x) {
+        this(x, null, null, 1);
     }
 
-    public No(int elemento, int altura, No esq, No dir) {
-        this.elemento = elemento;
+    public No(int x, No esq, No dir, int altura) {
+        this.elemento = x;
+        this.esq = esq;
+        this.dir = dir;
         this.altura = altura;
-        this.esq = this.dir = null;
     }
 }
 

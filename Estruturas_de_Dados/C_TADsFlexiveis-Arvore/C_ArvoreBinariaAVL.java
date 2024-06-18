@@ -3,10 +3,12 @@ class NoAVL {
     public NoAVL esq, dir;
     public int altura;
 
+    public NoAVL() {
+        this(-1, null, null, 1);
+    }
+
     public NoAVL(int x) {
-        this.elemento = x;
-        this.altura = 1; // Pq 1?
-        this.esq = this.dir = null;
+        this(x, null, null, 1);
     }
 
     public NoAVL(int x, NoAVL esq, NoAVL dir, int altura) {
@@ -16,12 +18,12 @@ class NoAVL {
         this.altura = altura;
     }
 
-    public void setAltura() {
-        this.altura = 1 + Math.max(getAltura(esq), getAltura(dir));
-    }
-
     public static int getAltura(NoAVL no) {
         return (no == null) ? 0 : no.altura;
+    }
+
+    public void setAltura() {
+        this.altura = 1 + Math.max(getAltura(esq), getAltura(dir));
     }
 }
 
