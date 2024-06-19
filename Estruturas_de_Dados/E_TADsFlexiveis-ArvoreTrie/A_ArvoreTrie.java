@@ -30,7 +30,7 @@ class ArvoreTrie {
     }
 
     // ==============================
-    // Metodos publicos
+    // ------ Metodos publicos ------
     // ==============================
 
     public boolean pesquisar(String palavra) throws Exception {
@@ -73,7 +73,7 @@ class ArvoreTrie {
         }
     }
 
-    public int contarAs() {
+    public int contarAs() { // Isso tá certo?
         int resp = 0;
         if (raiz != null) {
             resp = contarAs(raiz);
@@ -99,7 +99,7 @@ class ArvoreTrie {
     }
 
     // ==============================
-    // Metodos privados
+    // ------ Metodos privados ------
     // ==============================
 
     private void inserir(NoTrie no, String palavra, int pos) throws Exception {

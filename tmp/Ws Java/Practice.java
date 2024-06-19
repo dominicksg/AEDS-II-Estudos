@@ -247,3 +247,5 @@ public class Practice {
 // e nos retornos com o método balancear
 
 // cls && javac Practice.java && java Practice
+
+int array[] = { 4, 35, 10, 13, 3, 30, 15, 12, 7, 40, 20 };
