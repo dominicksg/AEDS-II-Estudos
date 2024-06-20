@@ -1,0 +1,19 @@
+    
+    if (index == frase.length()) {
+        return tamchecker == 0 && virgula < 2;
+    }
+
+    char currentChar = frase.charAt(index);
+    if (currentChar >= '0' && currentChar <= '9') {
+        tamchecker--; // Decrementa o contador
+    }
+    else if (currentChar == '.' || currentChar == ',') {
+        tamchecker--; // Decrementa o contador
+        virgula++; // Incrementa o contador de vírgulas
+        if (virgula >= 2) {
+            return false;
+        }
+    }
+
+    return IsReal(frase, i + 1, tamchecker, virgula);
+}

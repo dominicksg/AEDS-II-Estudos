@@ -1,0 +1,17 @@
+class Ciframento {
+    public static String Codificar(String frase, int i) {
+if (i>=frase.length()){
+    return "";
+}else {
+    char letra = frase.charAt(i);
+    char letracifrada;
+
+    if ((int) frase.charAt(i) >= 1 && (int) frase.charAt(i) <= 127) {
+        letracifrada = (char) (letra +3);
+    } else{
+        letracifrada = letra;
+    }
+            return caractereCifrado + CodificarRecursivo(frase, index + 1);
+
+
+    }
