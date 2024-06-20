@@ -74,7 +74,7 @@ class Pilha {
     }
 }// os carros saiam na ordem, necessariamente, e nao ultrapasse o tamanho
 
-public class Practice {
+public class EstacionamentoLinear {
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
 
