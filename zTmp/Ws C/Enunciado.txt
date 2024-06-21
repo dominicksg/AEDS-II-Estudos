@@ -1,30 +1,37 @@
-// O estacionamento tem apenas um corredor, com largura o suficiente para acomodar um carro, e profundidade suficiente para acomodar K carros, um atrás do outro. Como este estacionamento só tem um portão, só é possível entrar e sair por ele.
+Antes da mudança, ele colocou todos os seus livros dentro de várias caixas numeradas.
+Para facilitar a retirada dos livros, ele fez um inventário, indicando em qual caixa cada livro foi colocado, e o guardou na caixa de número 1.
+Chegando no seu novo quarto, ele viu que seus pais guardaram as caixas em várias pilhas, arrumadas em fila, com cada pilha encostada na pilha seguinte.
 
-// Dados o horário de chegada e saída prevista de N motoristas, incluindo Rafael, diga se é possível que todos consigam estacionar e remover seus carros no estacionamento citado.
+Antes de abrir qualquer outra caixa, ele quer recuperar seu inventário.
+Para tirar uma caixa de uma pilha, ele precisa que a caixa esteja no topo da pilha e que ao menos um de seus lados, não importa qual, esteja livre (isto é, não tenham nenhuma caixa adjacente).
 
-// Entrada
-// Haverá diversos casos de teste. Cada caso de teste inicia com dois inteiros Notorista e Karro (3 ≤ N ≤ 10⁴, 1 ≤ K ≤ 10³), representando o número de motoristas que farão uso do estacionamento, e o número de carros que o estacionamento consegue comportar, respectivamente.
-// Em seguida haverá N linhas, cada uma contendo dois inteiros Ci e Si (1 ≤ Ci, Si ≤ 10⁵), representando, respectivamente, o horário de chegada e saída do motorista i (1 ≤ i ≤ N). Os valores de Ci são dados de forma crescente, ou seja, Ci < Ci+1 para todo 1 ≤ i < N.
-// Não haverá mais de um motorista que chegam ao mesmo tempo, e nem mais de um motorista que saiam ao mesmo tempo. É possível que um motorista consiga estacionar no mesmo momento em que outro motorista deseja sair.
-// O último caso de teste é indicado quando N = K = 0, o qual não deverá ser processado.
-3 2
-1 10
-2 5
-6 9
+Para isso, Joãozinho precisa desempilhar algumas das caixas. Ele sempre tem espaço para colocar as caixas retiradas em outro lugar, sem mexer nas pilhas que os pais dele montaram.
+Para minimizar seu esforço, Joãozinho quer que você escreva um programa que, dadas as posições das caixas nas pilhas, determine quantas caixas Joãozinho precisa desempilhar para recuperar seu inventário.
 
-3 2
-1 10
-2 5
-6 12
 
-9-0 0
-10-
+Entrada
+ A primeira linha de cada caso de teste contém dois números inteiros N e P , indicando, respectivamente, o número de caixas e o número de pilhas (1 ≤ P ≤ N ≤ 1.000). As caixas são numeradas seqüencialmente de 1 a N.
+Cada uma das P linhas seguintes descreve uma pilha. Cada linha contém um inteiro Qi, indicando quantas caixas há na pilha i, seguido de um espaço em branco, seguido de uma lista de Qi números, que são os identificadores das caixas. Os elementos da lista são separados por um espaço em branco. Todas as pilhas contêm pelo menos uma caixa, e todas as caixas aparecem exatamente uma vez na entrada. As caixas em cada pilha são listadas em ordem, da base até o topo da pilha. Todas as caixas têm o mesmo formato.
+O final da entrada é indicado por N = P = 0.
+A entrada deve ser lida da entrada padrão.
+4 3
 
-// Saída
-// Para cada caso de teste imprima uma linha, contendo a palavra “Sim”, caso seja possível que todos os N motoristas façam uso do estacionamento, ou “Nao” caso contrário.
+1 3
+2 1 2
+1 4
 
-1-Sim
+4 3
 
-2-Nao
+1 3
+2 2 1
+1 4
 
-3-
+0 0
+
+
+
+Saída
+Para cada caso de teste da entrada, seu programa deve imprimir uma única linha, contendo um único inteiro: o número mínimo de caixas, além da caixa 1, que Joãozinho precisa desempilhar para recuperar o seu inventário.
+A saída deve ser escrita na saída padrão.
+2
+0

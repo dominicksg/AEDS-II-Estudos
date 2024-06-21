@@ -18,6 +18,7 @@ class Celula {
 
 class ListaDupla {
     private Celula primeiro, ultimo;
+    
 
     ListaDupla() {
         this.primeiro = new Celula();
