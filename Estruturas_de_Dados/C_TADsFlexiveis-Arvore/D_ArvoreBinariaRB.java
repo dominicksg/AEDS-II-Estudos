@@ -133,9 +133,9 @@ class ArvoreRB {
         return flag;
     }
 
-    private void caminharCentral(NoRB i) {
+    private void caminharCentral(NoRB i) { // Aqui é o caminharPre, para visualizar
         if (i != null) {
-            System.out.print(i.elemento + ((i.cor) ? "(p) " : "(b) ")); // red:black
+            System.out.print(i.elemento + ((i.cor) ? "(r) " : "(b) ")); // red:black = p:b
             caminharCentral(i.esq);
             caminharCentral(i.dir);
         }
@@ -207,6 +207,16 @@ class ArvoreRB {
         }
     }
 
+    private NoRB rotacaoEsq(NoRB no) {
+        System.out.println("Rotacao ESQ(" + no.elemento + ")");
+        NoRB noDir = no.dir;
+        NoRB noDirEsq = noDir.esq;
+
+        noDir.esq = no;
+        no.dir = noDirEsq;
+        return noDir;
+    }
+
     private NoRB rotacaoDir(NoRB no) {
         System.out.println("Rotacao DIR(" + no.elemento + ")");
         NoRB noEsq = no.esq;
@@ -218,24 +228,14 @@ class ArvoreRB {
         return noEsq;
     }
 
-    private NoRB rotacaoEsq(NoRB no) {
-        System.out.println("Rotacao ESQ(" + no.elemento + ")");
-        NoRB noDir = no.dir;
-        NoRB noDirEsq = noDir.esq;
-
-        noDir.esq = no;
-        no.dir = noDirEsq;
-        return noDir;
+    private NoRB rotacaoEsqDir(NoRB no) {
+        no.esq = rotacaoEsq(no.esq);
+        return rotacaoDir(no);
     }
 
     private NoRB rotacaoDirEsq(NoRB no) {
         no.dir = rotacaoDir(no.dir);
         return rotacaoEsq(no);
-    }
-
-    private NoRB rotacaoEsqDir(NoRB no) {
-        no.esq = rotacaoEsq(no.esq);
-        return rotacaoDir(no);
     }
 }
 
