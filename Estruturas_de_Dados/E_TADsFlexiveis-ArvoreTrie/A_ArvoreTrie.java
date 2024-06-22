@@ -142,13 +142,8 @@ public class A_ArvoreTrie {
         System.out.println(arv.pesquisar("SEI"));
         System.out.println(arv.pesquisar("sei"));
         System.out.println(arv.pesquisar("SE"));
-        System.out.println(arv.pesquisar("SEII"));
+        System.out.println(arv.pesquisar("SEIS"));
         System.out.println("//-------------- PESQUISA FIM --------------//");
-
-        // System.out.println("Pesquisar(ABACA):" + arv.pesquisar("ABACA"));
-        // System.out.println("Pesquisar(ABACAXIS):" + arv.pesquisar("ABACAXIS"));
-        // System.out.println("Pesquisar(gaga):" + arv.pesquisar("gaga"));
-
     }
 }
 // cls && javac A_ArvoreTrie.java && java A_ArvoreTrie
