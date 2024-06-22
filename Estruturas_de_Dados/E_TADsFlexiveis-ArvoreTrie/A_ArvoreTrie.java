@@ -37,7 +37,27 @@ class ArvoreTrie {
         return pesquisar(raiz, palavra, 0);
     }
 
-    public boolean pesquisar(NoTrie no, String palavra, int pos) throws Exception {
+    public void mostrar() {
+        mostrar("", raiz);
+    }
+
+    public int contarAs() { // Isso tá certo?
+        int resp = 0;
+        if (raiz != null) {
+            resp = contarAs(raiz);
+        }
+        return resp;
+    }
+
+    public void inserir(String palavra) throws Exception {
+        inserir(raiz, palavra, 0);
+    }
+
+    // ==============================
+    // ------ Metodos privados ------
+    // ==============================
+
+    private boolean pesquisar(NoTrie no, String palavra, int pos) throws Exception {
         boolean flag;
         if (no.prox[palavra.charAt(pos)] == null) {
             flag = false;
@@ -51,11 +71,7 @@ class ArvoreTrie {
         return flag;
     }
 
-    public void mostrar() {
-        mostrar("", raiz);
-    }
-
-    public void mostrar(String palavra, NoTrie no) {
+    private void mostrar(String palavra, NoTrie no) {
         if (no.folha == true) {
             System.out.println("Palavra: " + (palavra + no.letra));
         } else {
@@ -72,35 +88,6 @@ class ArvoreTrie {
             }
         }
     }
-
-    public int contarAs() { // Isso tá certo?
-        int resp = 0;
-        if (raiz != null) {
-            resp = contarAs(raiz);
-        }
-        return resp;
-    }
-
-    public int contarAs(NoTrie no) {
-        int resp = (no.letra == 'A') ? 1 : 0;
-
-        if (no.folha == false) {
-            for (int i = 0; i < no.prox.length; i++) {
-                if (no.prox[i] != null) {
-                    resp += contarAs(no.prox[i]);
-                }
-            }
-        }
-        return resp;
-    }
-
-    public void inserir(String palavra) throws Exception {
-        inserir(raiz, palavra, 0);
-    }
-
-    // ==============================
-    // ------ Metodos privados ------
-    // ==============================
 
     private void inserir(NoTrie no, String palavra, int pos) throws Exception {
         // System.out.print("\nEM NO(" + no.letra + ") (" + pos + ")");
@@ -120,6 +107,19 @@ class ArvoreTrie {
         } else {
             throw new Exception("Erro ao inserir!");
         }
+    }
+
+    private int contarAs(NoTrie no) {
+        int resp = (no.letra == 'A') ? 1 : 0;
+
+        if (no.folha == false) {
+            for (int i = 0; i < no.prox.length; i++) {
+                if (no.prox[i] != null) {
+                    resp += contarAs(no.prox[i]);
+                }
+            }
+        }
+        return resp;
     }
 
 }
@@ -149,14 +149,9 @@ public class A_ArvoreTrie {
 
         System.out.println(arv.contarAs());
 
-        // String s = "ABACA";
-        // System.out.println("Pesquisar(" + s + "):" + arv.pesquisar(s));
-
-        // s = "ABACAXIS";
-        // System.out.println("Pesquisar(" + s + "):" + arv.pesquisar(s));
-
-        // s = "gaga";
-        // System.out.println("Pesquisar(" + s + "):" + arv.pesquisar(s));
+        System.out.println("Pesquisar(ABACA):" + arv.pesquisar("ABACA"));
+        System.out.println("Pesquisar(ABACAXIS):" + arv.pesquisar("ABACAXIS"));
+        System.out.println("Pesquisar(gaga):" + arv.pesquisar("gaga"));
 
     }
 }
