@@ -396,8 +396,8 @@ public class Personagem {
     }
 
     public static Personagem ler(String linhaID) {
-        File file = new File("characters.csv");
-        // File file = new File("/tmp/characters.csv");
+        // File file = new File("characters.csv");
+        File file = new File("/tmp/characters.csv");
 
         try {
             Scanner scanner = new Scanner(file);
