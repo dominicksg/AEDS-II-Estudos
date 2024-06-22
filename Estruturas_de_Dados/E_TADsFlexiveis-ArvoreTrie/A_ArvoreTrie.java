@@ -33,12 +33,12 @@ class ArvoreTrie {
     // ------ Metodos publicos ------
     // ==============================
 
-    public boolean pesquisar(String palavra) throws Exception {
-        return pesquisar(raiz, palavra, 0);
-    }
-
     public void inserir(String palavra) throws Exception {
         inserir(raiz, palavra, 0);
+    }
+
+    public boolean pesquisar(String palavra) throws Exception {
+        return pesquisar(raiz, palavra, 0);
     }
 
     public void mostrar() {
