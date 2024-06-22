@@ -12,137 +12,117 @@ import java.io.File;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
-class CelulaLista {
-    Personagem personagem;
-    CelulaLista prox;
+class HashReserva {
+    Personagem tabela[];
+    int m1, m2, m, reserva;
+    // A palavra-chave "final" é usada para declarar constantes, que são variáveis
+    // cujo valor não pode ser alterado após a inicialização.
 
-    CelulaLista() {
-        this.personagem = new Personagem();
-        this.prox = null;
+    public HashReserva() {
+        this(13, 7);
     }
 
-    CelulaLista(Personagem p) {
-        this.personagem = p;
-        this.prox = null;
-    }
-}
+    public HashReserva(int m1, int m2) {
+        this.m1 = m1;
+        this.m2 = m2;
+        this.m = m1 + m2;
+        this.tabela = new Personagem[this.m];
 
-class ListaPersonagem {
-    private int tam;
-    private CelulaLista primeiro, ultimo;
-
-    public ListaPersonagem() {
-        primeiro = ultimo = new CelulaLista();
-        tam = 0;
+        for (int i = 0; i < m1; i++) {
+            tabela[i] = null;
+        }
+        reserva = 0;
     }
 
-    public int getTam() {
-        return this.tam;
+    public int h(String name) {
+        int somaASCII = 0;
+        for (int i = 0; i < name.length(); i++) {
+            somaASCII += (int) name.charAt(i);
+        }
+        return somaASCII % (m1);
     }
 
-    public void imprimir() {
-        if (this.tam == 0) {
-            System.out.println("Erro: lista vazia.");
-            return;
+    public boolean inserir(Personagem personagem) {
+        boolean resp = false;
+        int pos = h(personagem.getName());
+        if (tabela[pos] == null) {
+            tabela[pos] = personagem;
+            resp = true;
+        } else if (reserva < m2) {
+            tabela[m1 + reserva] = personagem;
+            reserva++;
+            resp = true;
         }
 
-        int cont = 0;
-        for (CelulaLista i = this.primeiro.prox; i != null; i = i.prox) {
-            System.out.print("[" + cont++ + " ## ");
-            i.personagem.imprimir();
+        return resp;
+    }
+
+    public boolean pesquisar(String nome) {
+        boolean resp = false;
+        System.out.print(nome + " ");
+
+        int pos = h(nome);
+
+        if (tabela[pos] != null && tabela[pos].getName().equals(nome)) {
+            System.out.println("(Posicao: " + pos + ") SIM");
+            resp = true;
+        } else if (tabela[pos] != null) {
+            for (int i = 0; i < reserva; i++) {
+                if (tabela[m1 + i] != null && tabela[m1 + i].getName().equals(nome)) {
+                    System.out.println("(Posicao: " + (m1 + i) + ") SIM");
+                    resp = true;
+                    i = reserva;
+                }
+            }
         }
-    }
 
-    // ---------- Funcoes INICIO -----------//
-
-    public void InserirInicio(Personagem personagem) {
-        CelulaLista tmp = new CelulaLista(personagem);
-        tmp.prox = primeiro.prox;
-        primeiro.prox = tmp;
-
-        if (primeiro == ultimo)
-            ultimo = tmp;
-        tmp = null;
-        this.tam++;
-    }
-
-    public void InserirFim(Personagem personagem) {
-        CelulaLista tmp = new CelulaLista(personagem);
-        ultimo.prox = tmp;
-        ultimo = ultimo.prox;
-        this.tam++;
-    }
-
-    public void Inserir(String posSTRING, Personagem personagem) throws Exception {
-        int pos = Integer.parseInt(posSTRING);
-        if (pos < 0 || pos > this.tam) {
-            throw new Exception("Erro: posicao inexistente");
-        } else if (pos == 0) {
-            InserirInicio(personagem);
-        } else if (pos == this.tam) {
-            InserirFim(personagem);
-        } else {
-            CelulaLista i = primeiro;
-            for (int j = 0; j < pos; j++, i = i.prox)
-                ;
-            CelulaLista tmp = new CelulaLista(personagem);
-            tmp.prox = i.prox;
-            i.prox = tmp;
-            tmp = i = null;
-            this.tam++;
+        if (resp == false) {
+            System.out.println("NAO");
         }
+        return resp;
     }
 
-    public Personagem RemoverInicio() throws Exception {
-        if (this.primeiro == this.ultimo) {
-            throw new Exception("Erro: lista vazia.");
+    public boolean remover(int elemento) {
+        boolean resp = false;
+        // ...
+        return resp;
+    }
+
+    public void mostrarTudo() {
+        System.out.print("Vetor inteiro = [ ");
+
+        for (int i = 0; i < m1 + reserva; i++) {
+            if (tabela[i] != null) {
+                System.out.print(tabela[i] + " ");
+            }
         }
-        Personagem personagem = primeiro.prox.personagem;
-        CelulaLista tmp = primeiro.prox;
-        primeiro.prox = primeiro.prox.prox;
-        tmp.prox = null;
-        tmp = null;
-        this.tam--;
-        return personagem;
+        System.out.println("]");
+
     }
 
-    public Personagem RemoverFim() throws Exception {
-        if (this.primeiro == this.ultimo) {
-            throw new Exception("Erro: lista vazia.");
+    public void mostrarPrincipal() {
+        System.out.print("Vetor Principal = [ ");
+
+        for (int i = 0; i < m1; i++) {
+            if (tabela[i] != null) {
+                System.out.print(tabela[i] + " ");
+            }
         }
-        CelulaLista i;
-        for (i = primeiro; i.prox != ultimo; i = i.prox)
-            ;
-        Personagem personagem = i.prox.personagem; // ou (ultimo.elemento)
-        ultimo = i;
-        ultimo.prox = i = null;
-        this.tam--;
-        return personagem;
+        System.out.println("]");
+
     }
 
-    public Personagem Remover(String posSTRING) throws Exception {
-        int pos = Integer.parseInt(posSTRING);
-        Personagem personagem = new Personagem();
-        if (pos < 0 || pos >= this.tam) {
-            throw new Exception("Erro: posicao inexistente");
-        } else if (pos == 0) {
-            RemoverInicio();
-        } else if (pos == this.tam - 1) {
-            RemoverFim();
-        } else {
-            CelulaLista i = primeiro;
-            for (int j = 0; j < pos; j++, i = i.prox)
-                ;
-            CelulaLista tmp = i.prox;
-            personagem = tmp.personagem;
-            i.prox = tmp.prox;
-            tmp = tmp.prox = null;
-            this.tam--;
+    public void mostrarReserva() {
+        System.out.print("Vetor Reserva = [ ");
+
+        for (int i = m1; i < m1 + reserva; i++) {
+            if (tabela[i] != null) {
+                System.out.print(tabela[i] + " ");
+            }
         }
-        return personagem;
+        System.out.println("]");
     }
 
-    // ---------- Funcoes FIM -----------//
 }
 
 class Lista {
@@ -389,10 +369,9 @@ public class Personagem {
     }
 
     public static void imprimirlista(Lista lista) {
-        // PROBLEMA NO TAMANHO AQUI
         System.out.print("{");
         for (int i = 0; i < 10; i++) {
-            if (lista.codenomes[i] != null) { // Gambiarra?
+            if (lista.codenomes[i] != null) {
                 System.out.print(lista.codenomes[i]);
             }
         }
@@ -519,51 +498,26 @@ public class Personagem {
         return resfinal;
     }
 
-    public static void hubFuncao(String linha, ListaPersonagem lista) throws Exception {
-
-        String palavra[] = linha.split(" ");
-
-        if (palavra[0].equals("I")) {
-            lista.InserirInicio(ler(palavra[1]));
-        } else if (palavra[0].equals("IF")) {
-            lista.InserirFim(ler(palavra[1]));
-        } else if (palavra[0].equals("I*")) {
-            lista.Inserir(palavra[1], ler(palavra[2]));
-        } else if (palavra[0].equals("R")) {
-            System.out.println("(R) " + lista.RemoverInicio().getName());
-        } else if (palavra[0].equals("RF")) {
-            System.out.println("(R) " + lista.RemoverFim().getName());
-        } else if (palavra[0].equals("R*")) {
-            System.out.println("(R) " + lista.Remover(palavra[1]).getName());
-        }
-    }
-
     // ---------- Outros Metodos FINAL -----------//
 
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
-        // Personagem personagem[] = new Personagem[30];
-        ListaPersonagem lista = new ListaPersonagem();
+        HashReserva personagens = new HashReserva(21, 9);
 
         String ID = sc.nextLine();
 
         // while (sc.hasNextLine()) {
         while (ID.equals("FIM") != true) {
-            lista.InserirInicio(ler(ID));
+            personagens.inserir(ler(ID));
             // personagem[i].imprimir();
             ID = sc.nextLine();
         }
 
-        int numEntradas = sc.nextInt();
-
-        for (int j = 0; j <= numEntradas; j++) {
-            ID = sc.nextLine(); // ID = Linha
-            hubFuncao(ID, lista);
+        ID = sc.nextLine();
+        while (ID.equals("FIM") != true) {
+            personagens.pesquisar(ID);
+            ID = sc.nextLine();
         }
-
-        System.out.print("[ Top ]\r\n");
-        lista.imprimir();
-        System.out.print("[ Bottom ]\r\n");
 
         sc.close();
     }
