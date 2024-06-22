@@ -1,7 +1,7 @@
 class NoTrie {
     public char letra;
-    public final int tamanho = 255; // Ascii table
     public NoTrie[] prox;
+    public final int tamanho = 255; // Ascii table
     public boolean folha;
 
     public NoTrie() {
@@ -45,7 +45,7 @@ class ArvoreTrie {
         mostrar("", raiz);
     }
 
-    public int contarAs() { // Isso tá certo?
+    public int contarAs() {
         int resp = 0;
         if (raiz != null) {
             resp = contarAs(raiz);
@@ -70,7 +70,7 @@ class ArvoreTrie {
                 inserir(no.prox[palavra.charAt(pos)], palavra, pos + 1);
             }
 
-        } else if (no.prox[palavra.charAt(pos)].folha == false && pos < palavra.length() - 1) {
+        } else if (pos < palavra.length() - 1 && no.prox[palavra.charAt(pos)].folha == false) {
             inserir(no.prox[palavra.charAt(pos)], palavra, pos + 1);
         } else {
             throw new Exception("Erro ao inserir!");
@@ -104,7 +104,7 @@ class ArvoreTrie {
         }
     }
 
-    private int contarAs(NoTrie no) {
+    private int contarAs(NoTrie no) { // Isso tá certo?
         int resp = (no.letra == 'A') ? 1 : 0;
 
         if (no.folha == false) {
@@ -123,26 +123,27 @@ public class A_ArvoreTrie {
     public static void main(String args[]) throws Exception {
         ArvoreTrie arv = new ArvoreTrie();
 
-        // String array[] = new String[8];
-        // array[0] = "ABACAXI";
-        // array[1] = "BALA";
-        // array[2] = "BOLO";
-        // array[3] = "ABACATE";
-        // array[4] = "galo";
-        // array[5] = "pata";
-        // array[6] = "pato";
-        // array[7] = "gato";
+        System.out.println("//-------------- INSERIR INICIO ------------//");
+        arv.inserir("SEI");
+        arv.inserir("SER");
+        arv.inserir("SEJA");
+        arv.inserir("sapo"); // não contará o 'a'
+        System.out.println("//-------------- INSERIR FIM ---------------//");
 
-        // for (int i = 0; i < array.length; i++) {
-        // arv.inserir(array[i]);
-        // }
+        System.out.println("//------------- MOSTRAR INICIO -------------//");
         // arv.mostrar();
+        System.out.println("//--------------- MOSTRAR FIM --------------//");
 
-        // for (int i = 0; i < array.length; i++) {
-        // System.out.println("Pesquisar(" + array[i] + "):" + arv.pesquisar(array[i]));
-        // }
-
+        System.out.println("//------------- CONTAR INICIO --------------//");
         // System.out.println(arv.contarAs());
+        System.out.println("//--------------- CONTAR FIM ---------------//");
+
+        System.out.println("//------------ PESQUISA INICIO -------------//");
+        System.out.println(arv.pesquisar("SEI"));
+        System.out.println(arv.pesquisar("sei"));
+        System.out.println(arv.pesquisar("SE"));
+        System.out.println(arv.pesquisar("SEII"));
+        System.out.println("//-------------- PESQUISA FIM --------------//");
 
         // System.out.println("Pesquisar(ABACA):" + arv.pesquisar("ABACA"));
         // System.out.println("Pesquisar(ABACAXIS):" + arv.pesquisar("ABACAXIS"));
