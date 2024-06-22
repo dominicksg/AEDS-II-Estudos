@@ -37,6 +37,10 @@ class ArvoreTrie {
         return pesquisar(raiz, palavra, 0);
     }
 
+    public void inserir(String palavra) throws Exception {
+        inserir(raiz, palavra, 0);
+    }
+
     public void mostrar() {
         mostrar("", raiz);
     }
@@ -49,13 +53,29 @@ class ArvoreTrie {
         return resp;
     }
 
-    public void inserir(String palavra) throws Exception {
-        inserir(raiz, palavra, 0);
-    }
-
     // ==============================
     // ------ Metodos privados ------
     // ==============================
+
+    private void inserir(NoTrie no, String palavra, int pos) throws Exception {
+        // System.out.print("\nEM NO(" + no.letra + ") (" + pos + ")");
+        if (no.prox[palavra.charAt(pos)] == null) {
+            // System.out.print("--> criando filho(" + palavra.charAt(pos) + ")");
+            no.prox[palavra.charAt(pos)] = new NoTrie(palavra.charAt(pos));
+
+            if (pos == palavra.length() - 1) {
+                // System.out.print("(folha)");
+                no.prox[palavra.charAt(pos)].folha = true;
+            } else {
+                inserir(no.prox[palavra.charAt(pos)], palavra, pos + 1);
+            }
+
+        } else if (no.prox[palavra.charAt(pos)].folha == false && pos < palavra.length() - 1) {
+            inserir(no.prox[palavra.charAt(pos)], palavra, pos + 1);
+        } else {
+            throw new Exception("Erro ao inserir!");
+        }
+    }
 
     private boolean pesquisar(NoTrie no, String palavra, int pos) throws Exception {
         boolean flag;
@@ -79,33 +99,8 @@ class ArvoreTrie {
                 if (no.prox[i] != null) {
                     System.out.println("ESTOU EM (" + no.letra + ") E VOU PARA (" + no.prox[i].letra + ")");
                     mostrar(palavra + no.letra, no.prox[i]);
-                    // if(i != raiz){
-                    // mostra(i.prox[j], palavra + i.letra);
-                    // }else{
-                    // mostra(i.prox[j], palavra);
-                    // }
                 }
             }
-        }
-    }
-
-    private void inserir(NoTrie no, String palavra, int pos) throws Exception {
-        // System.out.print("\nEM NO(" + no.letra + ") (" + pos + ")");
-        if (no.prox[palavra.charAt(pos)] == null) {
-            // System.out.print("--> criando filho(" + palavra.charAt(pos) + ")");
-            no.prox[palavra.charAt(pos)] = new NoTrie(palavra.charAt(pos));
-
-            if (pos == palavra.length() - 1) {
-                // System.out.print("(folha)");
-                no.prox[palavra.charAt(pos)].folha = true;
-            } else {
-                inserir(no.prox[palavra.charAt(pos)], palavra, pos + 1);
-            }
-
-        } else if (no.prox[palavra.charAt(pos)].folha == false && pos < palavra.length() - 1) {
-            inserir(no.prox[palavra.charAt(pos)], palavra, pos + 1);
-        } else {
-            throw new Exception("Erro ao inserir!");
         }
     }
 
@@ -128,30 +123,30 @@ public class A_ArvoreTrie {
     public static void main(String args[]) throws Exception {
         ArvoreTrie arv = new ArvoreTrie();
 
-        String array[] = new String[8];
-        array[0] = "ABACAXI";
-        array[1] = "BALA";
-        array[2] = "BOLO";
-        array[3] = "ABACATE";
-        array[4] = "galo";
-        array[5] = "pata";
-        array[6] = "pato";
-        array[7] = "gato";
+        // String array[] = new String[8];
+        // array[0] = "ABACAXI";
+        // array[1] = "BALA";
+        // array[2] = "BOLO";
+        // array[3] = "ABACATE";
+        // array[4] = "galo";
+        // array[5] = "pata";
+        // array[6] = "pato";
+        // array[7] = "gato";
 
-        for (int i = 0; i < array.length; i++) {
-            arv.inserir(array[i]);
-        }
-        arv.mostrar();
+        // for (int i = 0; i < array.length; i++) {
+        // arv.inserir(array[i]);
+        // }
+        // arv.mostrar();
 
-        for (int i = 0; i < array.length; i++) {
-            System.out.println("Pesquisar(" + array[i] + "):" + arv.pesquisar(array[i]));
-        }
+        // for (int i = 0; i < array.length; i++) {
+        // System.out.println("Pesquisar(" + array[i] + "):" + arv.pesquisar(array[i]));
+        // }
 
-        System.out.println(arv.contarAs());
+        // System.out.println(arv.contarAs());
 
-        System.out.println("Pesquisar(ABACA):" + arv.pesquisar("ABACA"));
-        System.out.println("Pesquisar(ABACAXIS):" + arv.pesquisar("ABACAXIS"));
-        System.out.println("Pesquisar(gaga):" + arv.pesquisar("gaga"));
+        // System.out.println("Pesquisar(ABACA):" + arv.pesquisar("ABACA"));
+        // System.out.println("Pesquisar(ABACAXIS):" + arv.pesquisar("ABACAXIS"));
+        // System.out.println("Pesquisar(gaga):" + arv.pesquisar("gaga"));
 
     }
 }
