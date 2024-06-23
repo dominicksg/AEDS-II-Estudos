@@ -1,6 +1,6 @@
 class HashReserva {
     int tabela[];
-    int m1, m2, m, reserva;
+    int m1, m2, m, inReserva;
     final int NULO = -1;
     // A palavra-chave "final" é usada para declarar constantes, que são variáveis
     // cujo valor não pode ser alterado após a inicialização.
@@ -18,7 +18,7 @@ class HashReserva {
         for (int i = 0; i < m1; i++) {
             tabela[i] = NULO;
         }
-        reserva = 0;
+        inReserva = 0;
     }
 
     public int h(int elemento) {
@@ -26,47 +26,47 @@ class HashReserva {
     }
 
     public boolean inserir(int elemento) {
-        boolean resp = false;
+        boolean flag = false;
         if (elemento != NULO) {
             int pos = h(elemento);
             if (tabela[pos] == NULO) {
                 tabela[pos] = elemento;
-                resp = true;
-            } else if (reserva < m2) {
-                tabela[m1 + reserva] = elemento;
-                reserva++;
-                resp = true;
+                flag = true;
+            } else if (inReserva < m2) {
+                tabela[m1 + inReserva] = elemento;
+                inReserva++;
+                flag = true;
             }
         }
-        return resp;
+        return flag;
     }
 
     public boolean pesquisar(int elemento) {
-        boolean resp = false;
+        boolean flag = false;
         int pos = h(elemento);
         if (tabela[pos] == elemento) {
-            resp = true;
+            flag = true;
         } else if (tabela[pos] != NULO) {
-            for (int i = 0; i < reserva; i++) {
+            for (int i = 0; i < inReserva; i++) {
                 if (tabela[m1 + i] == elemento) {
-                    resp = true;
-                    i = reserva;
+                    flag = true;
+                    i = inReserva;
                 }
             }
         }
-        return resp;
+        return flag;
     }
 
     public boolean remover(int elemento) {
-        boolean resp = false;
+        boolean flag = false;
         // ...
-        return resp;
+        return flag;
     }
 
     public void mostrarTudo() {
         System.out.print("Vetor inteiro = [ ");
 
-        for (int i = 0; i < m1 + reserva; i++) {
+        for (int i = 0; i < m1 + inReserva; i++) {
             if (tabela[i] != NULO) {
                 System.out.print(tabela[i] + " ");
             }
@@ -90,7 +90,7 @@ class HashReserva {
     public void mostrarReserva() {
         System.out.print("Vetor Reserva = [ ");
 
-        for (int i = m1; i < m1 + reserva; i++) {
+        for (int i = m1; i < m1 + inReserva; i++) {
             if (tabela[i] != NULO) {
                 System.out.print(tabela[i] + " ");
             }
