@@ -104,7 +104,7 @@ class ArvoreTrie {
         }
     }
 
-    private int contarAs(NoTrie no) { // Isso tá certo?
+    private int contarAs(NoTrie no) {
         int resp = (no.letra == 'A') ? 1 : 0;
 
         if (no.folha == false) {
