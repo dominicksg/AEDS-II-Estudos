@@ -1,0 +1,13 @@
+// Autoria de Victor Souza
+public static int whereNull(Personagem vetor[]){
+    int pos = vetor.length - 1;
+
+    for(int i = 0; i < vetor.length; i++){
+        if(vetor[i] == null){
+            pos = i;
+            i = vetor.length;
+        }
+    }
+
+    return pos;
+}
